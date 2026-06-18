@@ -1,0 +1,2874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+  @font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #24292e;
+  line-height: 1.5;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b31d28;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2 {
+  background-color: #d73a49;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #22863a;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #005cc5;
+  font-weight: 700;
+}
+
+.markdown-body .pl-mi {
+  color: #24292e;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #24292e;
+  font-weight: 700;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffeef0;
+  color: #b31d28;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #f0fff4;
+  color: #22863a;
+}
+
+.markdown-body .pl-mc {
+  background-color: #ffebda;
+  color: #e36209;
+}
+
+.markdown-body .pl-mi2 {
+  background-color: #005cc5;
+  color: #f6f8fa;
+}
+
+.markdown-body .pl-mdr {
+  color: #6f42c1;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  color: #032f62;
+  text-decoration: underline;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.markdown-body hr:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body hr:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-bottom: 8px!important;
+  padding-top: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.markdown-body hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: .25em;
+  margin: 24px 0;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  border-left: .25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: .3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  color: #6a737d;
+  font-size: .85em;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.markdown-body dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+.markdown-body table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  background-color: #fff;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: .2em .4em;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+.markdown-body .commit-tease-sha {
+  color: #444d56;
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 90%;
+}
+
+.markdown-body .blob-wrapper {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  color: rgba(27,31,35,.3);
+  cursor: pointer;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  min-width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  color: #24292e;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  overflow: visible;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  background: #ffea7f;
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body :checked+.radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+/*# sourceURL=webpack://./node_modules/github-markdown-css/github-markdown.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9naXRodWItbWFya2Rvd24tY3NzL2dpdGh1Yi1tYXJrZG93bi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwwQkFBMEI7RUFDMUIsMkRBQXF0RTtBQUN2dEU7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLDJCQUEyQjtBQUM3Qjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTs7Ozs7O0VBTUUsY0FBYztFQUNkLHNCQUFzQjtFQUN0QixrQkFBa0I7QUFDcEI7O0FBRUE7Ozs7OztFQU1FLHFCQUFxQjtBQUN2Qjs7QUFFQTs7Ozs7O0VBTUUsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsMEJBQTBCO0VBQzFCLDhCQUE4QjtFQUM5QixjQUFjO0VBQ2QsZ0JBQWdCO0VBQ2hCLGtJQUFrSTtFQUNsSSxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTs7RUFFRSxjQUFjO0FBQ2hCOztBQUVBOztFQUVFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTs7Ozs7OztFQU9FLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7OztFQUdFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFD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 */
+  </style>
+  <style>
+  /**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	/* This background color was intended by the author of this theme. */
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/*# sourceURL=webpack://./node_modules/prismjs/themes/prism.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9wcmlzbWpzL3RoZW1lcy9wcmlzbS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7RUFJRTs7QUFFRjs7Q0FFQyxZQUFZO0NBQ1osZ0JBQWdCO0NBQ2hCLHdCQUF3QjtDQUN4QixzRUFBc0U7Q0FDdEUsY0FBYztDQUNkLGdCQUFnQjtDQUNoQixnQkFBZ0I7Q0FDaEIsb0JBQW9CO0NBQ3BCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsZ0JBQWdCOztDQUVoQixnQkFBZ0I7Q0FDaEIsY0FBYztDQUNkLFdBQVc7O0NBRVgscUJBQXFCO0NBQ3JCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsYUFBYTtBQUNkOztBQUVBOztDQUVDLGlCQUFpQjtDQUNqQixtQkFBbUI7QUFDcEI7O0FBRUE7O0NBRUMsaUJBQWlCO0NBQ2pCLG1CQUFtQjtBQUNwQjs7QUFFQTtDQUNDOztFQUVDLGlCQUFpQjtDQUNsQjtBQUNEOztBQUVBLGdCQUFnQjtBQUNoQjtDQUNDLFlBQVk7Q0FDWixjQUFjO0NBQ2QsY0FBYztBQUNmOztBQUVBOztDQUVDLG1CQUFtQjtBQUNwQjs7QUFFQSxnQkFBZ0I7QUFDaEI7Q0FDQyxhQUFhO0NBQ2IsbUJBQW1CO0NBQ25CLG1CQUFtQjtBQUNwQjs7QUFFQTs7OztDQUlDLGdCQUFnQjtBQUNqQjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTs7Ozs7OztDQU9DLFdBQVc7QUFDWjs7QUFFQTs7Ozs7O0NBTUMsV0FBVztBQUNaOztBQUVBOzs7OztDQUtDLGNBQWM7Q0FDZCxvRUFBb0U7Q0FDcEUsaUNBQWlDO0FBQ2xDOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsY0FBYztBQUNmOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsaUJBQWlCO0FBQ2xCO0FBQ0E7Q0FDQyxrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxZQUFZO0FBQ2IiLCJzb3VyY2VSb290IjoiIn0= */
+  </style>
+  <style>
+  
+  </style>
+  <style>
+    .markdown-body {
+      font-family: -apple-system,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media not print {
+      .markdown-body {
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    }
+
+    .hf-container {
+      color: #24292e;
+      line-height: 1.3;
+    }
+
+    .markdown-body .highlight pre,
+    .markdown-body pre {
+      white-space: pre-wrap;
+    }
+    .markdown-body table {
+      display: table;
+    }
+    .markdown-body img[data-align="center"] {
+      display: block;
+      margin: 0 auto;
+    }
+    .markdown-body img[data-align="right"] {
+      display: block;
+      margin: 0 0 0 auto;
+    }
+    .markdown-body li.task-list-item {
+      list-style-type: none;
+    }
+    .markdown-body li > [type=checkbox] {
+      margin: 0 0 0 -1.3em;
+    }
+    .markdown-body input[type="checkbox"] ~ p {
+      margin-top: 0;
+      display: inline-block;
+    }
+    .markdown-body ol ol,
+    .markdown-body ul ol {
+      list-style-type: decimal;
+    }
+    .markdown-body ol ol ol,
+    .markdown-body ol ul ol,
+    .markdown-body ul ol ol,
+    .markdown-body ul ul ol {
+      list-style-type: decimal;
+    }
+  </style>
+  <style>.markdown-body a.footnote-ref {
+  text-decoration: none;
+}
+
+.footnotes {
+  font-size: .85em;
+  opacity: .8;
+}
+
+.footnotes li[role="doc-endnote"] {
+  position: relative;
+}
+
+.footnotes .footnote-back {
+  position: absolute;
+  font-family: initial;
+  top: .2em;
+  right: 1em;
+  text-decoration: none;
+}
+
+.inline-math.invalid,
+.multiple-math.invalid {
+  color: rgb(255, 105, 105);
+}
+
+.toc-container {
+  width: 100%;
+}
+
+.toc-container .toc-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.toc-container li,
+.toc-container ul,
+.toc-container ul li {
+  list-style: none !important;
+}
+
+.toc-container > ul {
+  padding-left: 0;
+}
+
+.toc-container ul li span {
+  display : flex;
+}
+
+.toc-container ul li span a {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-container ul li span a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-container ul li span span.dots {
+  flex: 1;
+  height: 0.65em;
+  margin: 0 10px;
+  border-bottom: 2px dotted black;
+}
+
+/*# sourceURL=webpack://./src/muya/lib/assets/styles/exportStyle.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9tdXlhL2xpYi9hc3NldHMvc3R5bGVzL2V4cG9ydFN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLFNBQVM7RUFDVCxVQUFVO0VBQ1YscUJBQXFCO0FBQ3ZCOztBQUVBOztFQUVFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCOztBQUVBOzs7RUFHRSwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7QUFDQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxPQUFPO0VBQ1AsY0FBYztFQUNkLGNBQWM7RUFDZCwrQkFBK0I7QUFDakMiLCJzb3VyY2VSb290IjoiIn0= */</style>
+  <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
+</head>
+<body>
+  <article class="markdown-body"><h1 class="atx" id="腾讯数据仓库规范体系">腾讯数据仓库规范体系</h1>
+<blockquote>
+<p>本文档基于腾讯公开数据仓库规范资料整理而成，为数仓建模和开发提供参考标准。</p>
+</blockquote>
+<h2 class="atx" id="文档说明">文档说明</h2>
+<p>本文档整理自腾讯云开发者社区及相关公开资料，包含数据仓库分层模型、命名规范、开发规范等核心内容。</p>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/2285006">数仓命名规范大全 - 腾讯云开发者社区</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1841349">数据仓库设计和规范—数仓分层和规范 - 腾讯云</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/2480922">大数据仓库开发规范示例 - 腾讯云</a></li>
+<li><a href="https://www.cnblogs.com/johnnyzen/p/19142478">腾讯数据仓库规范体系 - 博客园</a></li>
+</ul>
+<hr>
+<h2 class="atx" id="一、数据仓库模型设计">一、数据仓库模型设计</h2>
+<h3 class="atx" id="11-数据分层模型">1.1 数据分层模型</h3>
+<p>腾讯数据仓库采用标准的多层架构设计，主要包含以下分层：</p>
+<pre><code class="fenced-code-block">┌─────────────────────────────────────────────────────────────┐
+│                      APP/DM 应用层                            │
+│  数据应用层、数据集市层，提供给数据产品和数据分析使用            │
+└─────────────────────────────────────────────────────────────┘
+                              ▲
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                   DWS 汇总层（服务层）                         │
+│  公共汇总粒度事实层，进行轻度汇总，基于DWD层整合汇总分析主题       │
+└─────────────────────────────────────────────────────────────┘
+                              ▲
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                   DWM 中间层（可选）                          │
+│  数据中间层，对DWD层数据进行轻度聚合，生成中间表               │
+└─────────────────────────────────────────────────────────────┘
+                              ▲
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                   DWD 明细层                                 │
+│  数据仓库明细层，保持与ODS层相同粒度，进行数据清洗和规范化       │
+└─────────────────────────────────────────────────────────────┘
+                              ▲
+                              │
+┌─────────────────────────────────────────────────────────────┐
+│                   ODS 贴源层                                │
+│  操作数据存储层，最接近数据源，原封不动接入原始数据             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<h4 class="atx" id="各层详细说明">各层详细说明</h4>
+<table>
+<thead>
+<tr>
+<th>分层</th>
+<th>全称</th>
+<th>中文名</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ODS</td>
+<td>Operational Data Store</td>
+<td>操作数据存储层/贴源层</td>
+<td>最接近数据源的一层，保持与源系统数据一致，不做数据清洗转换</td>
+</tr>
+<tr>
+<td>DWD</td>
+<td>Data Warehouse Detail</td>
+<td>数据仓库明细层</td>
+<td>保持与ODS层相同数据粒度，提供数据质量保证，进行数据清洗、整合、规范化</td>
+</tr>
+<tr>
+<td>DWM</td>
+<td>Data Warehouse Middle</td>
+<td>数据仓库中间层</td>
+<td>在DWD层基础上进行轻度聚合操作，生成中间表，提升公共指标复用性</td>
+</tr>
+<tr>
+<td>DWS</td>
+<td>Data Warehouse Service</td>
+<td>数据仓库服务层</td>
+<td>公共汇总层，进行轻度汇总，粒度比明细数据稍粗，一般为宽表</td>
+</tr>
+<tr>
+<td>DIM</td>
+<td>Dimension</td>
+<td>维度层</td>
+<td>存储维度信息和配置表，包含高基数维度（用户、商品资料）和低基数维度（枚举值配置）</td>
+</tr>
+<tr>
+<td>DM/APP</td>
+<td>Data Market/Application</td>
+<td>数据集市/应用层</td>
+<td>提供给数据产品和数据分析使用的数据，包含报表数据等</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="12-数据分层边界">1.2 数据分层边界</h3>
+<pre><code class="fenced-code-block">数据流向标准（不含维度）：ODS → DWD → DWS → DM
+维度流向：DWD → DIM 或 ODS → DIM
+禁止反向依赖</code></pre>
+<p><strong>分层调用规范：</strong></p>
+<ol>
+<li>DWA/DM应用层优先调用DWS层数据，不允许跨过DWS层从DWD层重复加工</li>
+<li>DWS应积极了解应用层数据需求，将公共数据沉淀后提供数据服务</li>
+<li>ODS层数据不能直接被应用层任务引用</li>
+<li>从ODS到DWS层任务深度不宜过大（建议不超过10层）</li>
+<li>DWM汇总层优先调用DWD明细层，避免大量汇总数据直接从海量明细数据中计算</li>
+<li>有针对性地建设DWM公共汇总层，避免应用层过度依赖DWD层明细数据</li>
+</ol>
+<h3 class="atx" id="13-数据主题域">1.3 数据主题域</h3>
+<p>主题域是面向业务分析，将业务分析过程进行高度概括及抽象，是在较高层次上将企业信息系统中的数据综合、归类并进行分析利用的抽象。</p>
+<p><strong>常见主题域分类：</strong></p>
+<table>
+<thead>
+<tr>
+<th>主题域</th>
+<th>描述</th>
+<th>示例内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户主题域</td>
+<td>描述各类参与人在业务场景中的信息</td>
+<td>用户资料、身份信息、人口统计、费用、账户信息</td>
+</tr>
+<tr>
+<td>行为主题域</td>
+<td>描述各类参与人的行为信息</td>
+<td>UGC发表、评论、登录、下载、付费等行为</td>
+</tr>
+<tr>
+<td>内容主题域</td>
+<td>描述各类内容信息</td>
+<td>文章、视频、音频等多媒体内容</td>
+</tr>
+<tr>
+<td>产品主题域</td>
+<td>描述产品相关信息</td>
+<td>商品、服务、功能模块等</td>
+</tr>
+<tr>
+<td>渠道主题域</td>
+<td>描述渠道相关信息</td>
+<td>推广渠道、销售渠道、合作伙伴等</td>
+</tr>
+<tr>
+<td>交易主题域</td>
+<td>描述交易相关信息</td>
+<td>订单、支付、退款等</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="atx" id="二、数据仓库规范定义">二、数据仓库规范定义</h2>
+<h3 class="atx" id="21-表命名规则">2.1 表命名规则</h3>
+<h4 class="atx" id="211-总体命名规范">2.1.1 总体命名规范</h4>
+<p><strong>命名公式：</strong></p>
+<pre><code class="fenced-code-block">[数据分层]_[BG]_[业务域]_[主题域]_[业务描述]_[刷新周期]_[存储策略]</code></pre>
+<p><strong>组成部分说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>说明</th>
+<th>可选值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据分层</td>
+<td>表所在分层</td>
+<td>ods/dwd/dws/dwm/dim/app/dm</td>
+<td>必填</td>
+</tr>
+<tr>
+<td>BG</td>
+<td>事业群</td>
+<td>WXG/PCG/IEG/CSIG/TEG/CDG</td>
+<td>可选</td>
+</tr>
+<tr>
+<td>业务域</td>
+<td>业务线简称</td>
+<td>如应用宝(yyb)、信息安全(infosec)</td>
+<td>可选</td>
+</tr>
+<tr>
+<td>主题域</td>
+<td>业务过程抽象</td>
+<td>user/ad/game等</td>
+<td>可选</td>
+</tr>
+<tr>
+<td>业务描述</td>
+<td>业务过程提炼</td>
+<td>见名知意</td>
+<td>必填</td>
+</tr>
+<tr>
+<td>刷新周期</td>
+<td>h/d/w/m/q/y</td>
+<td>小时/天/周/月/季/年</td>
+<td>必填</td>
+</tr>
+<tr>
+<td>存储策略</td>
+<td>i/f</td>
+<td>增量/全量</td>
+<td>必填</td>
+</tr>
+</tbody></table>
+<p><strong>命名示例：</strong></p>
+<pre><code class="fenced-code-block">dwd_pcg_yyb_user_info_df
+├── dwd: 明细层
+├── pcg: PCG事业群
+├── yyb: 应用宝业务线
+├── user: 用户主题域
+├── info: 基础信息描述
+├── d: 天级刷新
+└── f: 全量存储</code></pre>
+<h4 class="atx" id="212-各分层命名细则">2.1.2 各分层命名细则</h4>
+<h5 class="atx" id="ods层命名规范">ODS层命名规范</h5>
+<p><strong>格式：</strong> <code>ods_[业务域]_[业务描述]_[加载方式]</code></p>
+<p><strong>加载方式后缀：</strong></p>
+<ul>
+<li><code>-S</code>: 实时加载</li>
+<li><code>-I</code>: 增量加载（DI：天级增量，HI：小时级增量）</li>
+<li><code>-A</code>: 全量加载（DA：天级全量，HA：小时级全量）</li>
+<li><code>-H</code>: 历史表</li>
+</ul>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ods_tmall_mysql_order_info_di</code></td>
+<td>天猫MySQL订单信息表，天级增量</td>
+</tr>
+<tr>
+<td><code>ods_pcg_yyb_user_info_df</code></td>
+<td>应用宝用户基础信息表，按天全量</td>
+</tr>
+<tr>
+<td><code>ods_snap_stream_load</code></td>
+<td>Stream Load快照表</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>源系统数据的采集和同步，保持与源系统数据一致</li>
+<li>实时接入数据需包含数据写入状态（新增、修改、删除）和实时写入时间</li>
+<li>快照表处理：<ul>
+<li>数据量&lt;100万：按天/周/月做全量快照表</li>
+<li>数据量&gt;1000万：根据业务主键做拉链表</li>
+<li>数据量100万-1000万：根据业务需求决定</li>
+</ul>
+</li>
+<li>补录表处理：需包含固定模板、适用范围、有效期、更新机制</li>
+</ul>
+<h5 class="atx" id="dwd层命名规范">DWD层命名规范</h5>
+<p><strong>格式：</strong> <code>dwd_[主题名]_[加工方式]</code></p>
+<p><strong>加工方式后缀：</strong></p>
+<ul>
+<li><code>_H</code>: 按时加工</li>
+<li><code>_D</code>: 按日加工</li>
+</ul>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dwd_sales_di</code></td>
+<td>销售明细表，按日加工</td>
+</tr>
+<tr>
+<td><code>dwd_pcg_yyb_click_log_di</code></td>
+<td>应用宝点击日志表，按天增量</td>
+</tr>
+<tr>
+<td><code>dwd_wxg_game_gamecenter_click_di</code></td>
+<td>微信游戏中心点击表，天级增量</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>数据完整性保障（实体完整性、数据行完整性、字段完整性）</li>
+<li>数据清洗：对脏数据按规则进行清洗</li>
+<li>维度关联映射</li>
+<li>维度退化：减少事实表和维表的关联</li>
+<li>相同主题数据汇集，提高可用性</li>
+</ul>
+<h5 class="atx" id="dwm层命名规范">DWM层命名规范</h5>
+<p><strong>格式：</strong> <code>dwm_[主题名]_[功能描述]_[加工方式]</code></p>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dwm_wxg_game_behavior_gamecenter_click_di</code></td>
+<td>微信游戏中心点击表，天级增量</td>
+</tr>
+<tr>
+<td><code>dwm_teg_infosec_user_ugc_post_d</code></td>
+<td>信安用户UGC发表行为，天增量</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>对通用的核心维度进行聚合操作</li>
+<li>计算相应的统计指标</li>
+<li>提升公共指标的复用性，减少重复加工</li>
+</ul>
+<h5 class="atx" id="dws层命名规范">DWS层命名规范</h5>
+<p><strong>格式：</strong> <code>dws_[主题名]_[功能描述]</code> 或 <code>dws_[主题内容]_[统计周期]</code></p>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dws_sales_order_analysis</code></td>
+<td>销售订单分析表</td>
+</tr>
+<tr>
+<td><code>dws_pcg_yyb_user_dau_di</code></td>
+<td>用户日活相关汇总表，按天增量</td>
+</tr>
+<tr>
+<td><code>dws_wxg_game_gamecenter_click_di</code></td>
+<td>微信游戏中心点击表，天级增量</td>
+</tr>
+<tr>
+<td><code>dws_load_d</code></td>
+<td>导入相关主题表，按天统计</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>不同实体间的关联和逻辑转换</li>
+<li>维度退化</li>
+<li>不同粒度的指标度量和轻度汇总</li>
+<li>覆盖80%的应用场景</li>
+<li>形成宽表，提供后续业务查询、OLAP分析、数据分发</li>
+</ul>
+<h5 class="atx" id="dim层命名规范">DIM层命名规范</h5>
+<p><strong>格式：</strong> <code>dim_[维表类别]</code> 或 <code>dim_[主题域][维度类型][维度]</code></p>
+<p><strong>维表类别：</strong> 用户、日期、地址、标签等</p>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dim_user_info</code></td>
+<td>用户维度表</td>
+</tr>
+<tr>
+<td><code>dim_date</code></td>
+<td>日期维度表</td>
+</tr>
+<tr>
+<td><code>dim_city</code></td>
+<td>城市维表，静态数据</td>
+</tr>
+<tr>
+<td><code>dim_channel_df</code></td>
+<td>渠道维表，按天全量</td>
+</tr>
+<tr>
+<td><code>dim_doris_scd_load</code></td>
+<td>导入维度，缓慢变化维</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>维度的一致性和准确性</li>
+<li>数据行中为空维度的兼容处理</li>
+<li>缓慢变化维（SCD）：保留历史数据和版本，TTL为30天</li>
+<li>字段冗余设计，采用列存储方式</li>
+</ul>
+<h5 class="atx" id="dmapp层命名规范">DM/APP层命名规范</h5>
+<p><strong>格式：</strong> <code>dm_[项目/分析域][主题内容][统计周期]</code> 或 <code>app_[应用系统标识]_[业务描述]_[刷新周期][存储策略]</code></p>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>app_pcg_yyb_show_user_dau_di</code></td>
+<td>用户日活报表，按天增量</td>
+</tr>
+<tr>
+<td><code>dm_doris_load_d</code></td>
+<td>Doris导入相关分析，按天统计</td>
+</tr>
+<tr>
+<td><code>app_wxg_game_open_social_di</code></td>
+<td>微信游戏开放平台社交报表，天增量</td>
+</tr>
+<tr>
+<td><code>app_teg_index_galilei_doc_profile_df</code></td>
+<td>腾讯指数伽利略文章画像，天全量</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>基于不同分析主题的宽表</li>
+<li>维度和指标的提取</li>
+<li>指标粒度一致性</li>
+<li>数据高度汇总</li>
+<li>保障维度完整性</li>
+</ul>
+<h5 class="atx" id="tmp层命名规范">TMP层命名规范</h5>
+<p><strong>格式：</strong> <code>tmp_[正式表名]_[时间戳(yyyyMMdd)]_[编号]</code> 或 <code>tmp_[用户][表内容][有效期]</code></p>
+<p><strong>命名示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>表命名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tmp_app_yyb_show_user_dau_di_20190501_001</code></td>
+<td>对应表的临时表，20190501天001编号</td>
+</tr>
+</tbody></table>
+<p><strong>处理内容：</strong></p>
+<ul>
+<li>ETL作业中的临时表，可临时创建和删除</li>
+<li>需设置确定的生命周期</li>
+<li>模型管理员根据有效期和用户确认清理计划</li>
+</ul>
+<h4 class="atx" id="213-其他表类型命名规范">2.1.3 其他表类型命名规范</h4>
+<table>
+<thead>
+<tr>
+<th>表类型</th>
+<th>命名格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中间表</td>
+<td><code>mid_[table_name]_[0~9|dim]</code></td>
+<td>Job中临时存储的中间数据</td>
+</tr>
+<tr>
+<td>临时表</td>
+<td><code>tmp_xxx</code></td>
+<td>临时测试使用，可随时删除</td>
+</tr>
+<tr>
+<td>手工表</td>
+<td><code>dwd_[业务域]_manual_xxx</code></td>
+<td>手工维护的表，放在dwd层</td>
+</tr>
+<tr>
+<td>视图</td>
+<td><code>[层前缀]_v_[主题名]_[功能描述]</code></td>
+<td>如DWA_V_xxx</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="22-字段命名规范">2.2 字段命名规范</h3>
+<h4 class="atx" id="221-基本原则">2.2.1 基本原则</h4>
+<ul>
+<li>字段名见名知意，统一标准，降低数据沟通成本</li>
+<li>除标准维度和常用字段外，可自行确定字段名</li>
+<li>英文名尽量使用字段全称，单词间用下划线分隔</li>
+<li>字段与系统关键字冲突时加<code>_col</code>后缀</li>
+</ul>
+<h4 class="atx" id="222-标准维度字段">2.2.2 标准维度字段</h4>
+<table>
+<thead>
+<tr>
+<th>维度类型</th>
+<th>字段</th>
+<th>命名</th>
+<th>格式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间类</td>
+<td>统计日期</td>
+<td>stat_date</td>
+<td>YYYY-MM-DD</td>
+<td>2019-08-02</td>
+</tr>
+<tr>
+<td>时间类</td>
+<td>统计小时</td>
+<td>stat_hour</td>
+<td>HH</td>
+<td>22</td>
+</tr>
+<tr>
+<td>地点类</td>
+<td>IP地址</td>
+<td>ip</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>地点类</td>
+<td>城市编码</td>
+<td>city_id</td>
+<td>-</td>
+<td>001</td>
+</tr>
+<tr>
+<td>账号类</td>
+<td>账号</td>
+<td>user_id</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>账号类</td>
+<td>群号</td>
+<td>group_id</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>应用类</td>
+<td>应用编码</td>
+<td>app_id</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>渠道类</td>
+<td>渠道编码</td>
+<td>channel_id</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 class="atx" id="223-属性字段命名规范">2.2.3 属性字段命名规范</h4>
+<table>
+<thead>
+<tr>
+<th>字段类型</th>
+<th>格式</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性字段</td>
+<td><code>[通用英文单词]</code></td>
+<td>文本字段，不加前后缀</td>
+<td>city_name, address</td>
+</tr>
+<tr>
+<td>指标字段</td>
+<td><code>[修饰词]_[原子词]_[时间修饰]</code></td>
+<td>基础指标命名规则</td>
+<td>wx_pay_ord_amt_1w</td>
+</tr>
+<tr>
+<td>计数字段</td>
+<td><code>[计数主体]_cnt</code></td>
+<td>单量、件数、用户数等整型</td>
+<td>user_cnt, order_cnt</td>
+</tr>
+<tr>
+<td>比例字段</td>
+<td><code>[计数主体]_rate</code></td>
+<td>占比、百分率等double型</td>
+<td>pay_rate, click_rate</td>
+</tr>
+<tr>
+<td>费用字段</td>
+<td><code>[计数主体]_amt</code></td>
+<td>费用、收入相关字段</td>
+<td>pay_amt, income_amt</td>
+</tr>
+<tr>
+<td>标识字段</td>
+<td><code>is_[标识主体]</code></td>
+<td>取值为Y/N的二元值</td>
+<td>is_active, is_vip</td>
+</tr>
+<tr>
+<td>时间字段</td>
+<td><code>[业务主体]_time</code></td>
+<td>YYYY-MM-DD HH:Mi:SS格式</td>
+<td>order_time, create_time</td>
+</tr>
+<tr>
+<td>日期字段</td>
+<td><code>[业务主体]_date</code></td>
+<td>YYYY-MM-DD格式</td>
+<td>order_date, birth_date</td>
+</tr>
+</tbody></table>
+<p><strong>指标字段命名示例：</strong></p>
+<pre><code class="fenced-code-block">最近七天微信支付金额
+├── 修饰词: wx（微信）
+├── 原子词: pay_ord_amt（支付订单金额）
+└── 时间修饰: _1w（最近7天）
+结果: wx_pay_ord_amt_1w</code></pre>
+<h4 class="atx" id="224-分区字段规范">2.2.4 分区字段规范</h4>
+<table>
+<thead>
+<tr>
+<th>分区类型</th>
+<th>字段名</th>
+<th>格式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日/周分区</td>
+<td>ds</td>
+<td>yyyyMMdd</td>
+<td>默认业务运行日期</td>
+</tr>
+<tr>
+<td>月/季度/年分区</td>
+<td>ds</td>
+<td>yyyyMM/yyyyNN/yyyy</td>
+<td>默认月/季/年最后一天</td>
+</tr>
+<tr>
+<td>小时分区</td>
+<td>hh</td>
+<td>00..23</td>
+<td>-</td>
+</tr>
+<tr>
+<td>分钟分区</td>
+<td>mm</td>
+<td>00,15,30,45</td>
+<td>-</td>
+</tr>
+<tr>
+<td>业务分区</td>
+<td>[自定义]</td>
+<td>-</td>
+<td>如channel等业务维度</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>分区深度不建议超过3层</p>
+</blockquote>
+<h4 class="atx" id="225-时间维度规范">2.2.5 时间维度规范</h4>
+<table>
+<thead>
+<tr>
+<th>中文名</th>
+<th>时间维度命名</th>
+<th>缩写</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最近一天</td>
+<td>1day</td>
+<td>_1d</td>
+<td>最近一天</td>
+</tr>
+<tr>
+<td>最近三天</td>
+<td>3day</td>
+<td>_3d</td>
+<td>最近三天</td>
+</tr>
+<tr>
+<td>最近七天</td>
+<td>7week</td>
+<td>_1w</td>
+<td>最近七天</td>
+</tr>
+<tr>
+<td>最近14天</td>
+<td>2week</td>
+<td>_2w</td>
+<td>最近14天</td>
+</tr>
+<tr>
+<td>最近30天</td>
+<td>1month</td>
+<td>_1m</td>
+<td>最近30天</td>
+</tr>
+<tr>
+<td>最近60天</td>
+<td>2month</td>
+<td>_2m</td>
+<td>最近60天</td>
+</tr>
+<tr>
+<td>最近90天</td>
+<td>3month</td>
+<td>_3m</td>
+<td>最近90天</td>
+</tr>
+<tr>
+<td>最近180天</td>
+<td>6month</td>
+<td>_6m</td>
+<td>最近180天</td>
+</tr>
+<tr>
+<td>180天以前</td>
+<td>before_6month</td>
+<td>_b6m</td>
+<td>180天以前</td>
+</tr>
+<tr>
+<td>自然周</td>
+<td>calendar_week</td>
+<td>_cw</td>
+<td>自然周</td>
+</tr>
+<tr>
+<td>自然月</td>
+<td>calendar_month</td>
+<td>_cm</td>
+<td>自然月</td>
+</tr>
+<tr>
+<td>自然季度</td>
+<td>calendar_quarter</td>
+<td>_cq</td>
+<td>自然季度</td>
+</tr>
+<tr>
+<td>自然年</td>
+<td>calendar_year</td>
+<td>_cy</td>
+<td>自然年</td>
+</tr>
+<tr>
+<td>财年</td>
+<td>finance_year</td>
+<td>_fy</td>
+<td>财年</td>
+</tr>
+<tr>
+<td>半财年</td>
+<td>half_finance_year</td>
+<td>_hfy</td>
+<td>半财年</td>
+</tr>
+<tr>
+<td>财年初截止到当日</td>
+<td>finance_to_day</td>
+<td>_ftd</td>
+<td>财年初截止到当日</td>
+</tr>
+<tr>
+<td>历史截止到当日</td>
+<td>start_to_day</td>
+<td>_std</td>
+<td>历史累计到当日</td>
+</tr>
+<tr>
+<td>自然年初截止到当日</td>
+<td>year_to_day</td>
+<td>_ytd</td>
+<td>年初至今</td>
+</tr>
+<tr>
+<td>自然季度初截止到当日</td>
+<td>quarter_to_day</td>
+<td>_qtd</td>
+<td>季度初至今</td>
+</tr>
+<tr>
+<td>自然月初截止到当日</td>
+<td>month_to_day</td>
+<td>_mtd</td>
+<td>月初至今</td>
+</tr>
+<tr>
+<td>自然周初截止到当日</td>
+<td>week_to_day</td>
+<td>_wtd</td>
+<td>周初至今</td>
+</tr>
+<tr>
+<td>最近一小时</td>
+<td>1hour</td>
+<td>_1h</td>
+<td>最近一小时</td>
+</tr>
+<tr>
+<td>0点截止当前小时</td>
+<td>day_to_hour</td>
+<td>_dth</td>
+<td>当日0点至当前小时</td>
+</tr>
+<tr>
+<td>0点截止当前</td>
+<td>day_to_realtime</td>
+<td>_dtr</td>
+<td>当日0点至当前</td>
+</tr>
+<tr>
+<td>小时截止当前</td>
+<td>hour_to_realtime</td>
+<td>_htr</td>
+<td>当前小时累计</td>
+</tr>
+<tr>
+<td>分钟截止到当前</td>
+<td>minute_to_realtime</td>
+<td>_mtr</td>
+<td>当前分钟累计</td>
+</tr>
+<tr>
+<td>未来七天</td>
+<td>predict_1week</td>
+<td>_p1w</td>
+<td>未来7天预测</td>
+</tr>
+<tr>
+<td>未来4周</td>
+<td>predict_1month</td>
+<td>_p1m</td>
+<td>未来4周预测</td>
+</tr>
+<tr>
+<td>混合多天</td>
+<td>nd</td>
+<td>_nd</td>
+<td>混合多天</td>
+</tr>
+<tr>
+<td>报表周</td>
+<td>report_week</td>
+<td>_rw</td>
+<td>上周四到本周三</td>
+</tr>
+<tr>
+<td>15分钟</td>
+<td>quarter</td>
+<td>_qh</td>
+<td>一刻钟</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="atx" id="三、数据仓库开发规范">三、数据仓库开发规范</h2>
+<h3 class="atx" id="31-原则约定">3.1 原则约定</h3>
+<h4 class="atx" id="311-数据复用，共享精神">3.1.1 数据复用，共享精神</h4>
+<ul>
+<li>各业务优先使用公共数据中间层数据</li>
+<li>个性化指标可自行设计数据模型，统一命名</li>
+</ul>
+<h4 class="atx" id="312-命名规范化，一致性">3.1.2 命名规范化，一致性</h4>
+<ul>
+<li>采用统一命名规范，见名知意</li>
+<li>降低数据沟通成本及使用成本</li>
+</ul>
+<h3 class="atx" id="32-数据层级调用规范（强校验）">3.2 数据层级调用规范（强校验）</h3>
+<ol>
+<li>各业务、应用优先使用DW公共数据中间层数据</li>
+<li>已经存在中间层数据，不允许应用层跨过中间层从ODS重复加工数据</li>
+<li>各业务、应用团队需积极配合公共数据中间层团队进行数据建设改造和迁移</li>
+<li>公共数据中间层团队应积极了解应用层数据需求，将公用数据沉淀到公共层</li>
+</ol>
+<h3 class="atx" id="33-数据脚本开发规范">3.3 数据脚本开发规范</h3>
+<h4 class="atx" id="331-脚本开发基本要求">3.3.1 脚本开发基本要求</h4>
+<ol>
+<li>原则上一个脚本产生一个表</li>
+<li>原则上一个脚本命名与生成表命名一致</li>
+<li>脚本统一采用Git管理</li>
+<li>禁止使用<code>SELECT *</code>操作，所有操作必须明确指定列名</li>
+</ol>
+<h4 class="atx" id="332-注释规范">3.3.2 注释规范</h4>
+<ul>
+<li><strong>程序头注释</strong>：功能、人员、时间等信息</li>
+<li><strong>代码段注释</strong>：每段代码前必须包含注释行，描述代码功能</li>
+<li><strong>表注释</strong>：每个表需填写注释，描述表功能、使用说明</li>
+<li><strong>字段注释</strong>：填写字段说明，枚举值字段需填写含义或维表</li>
+</ul>
+<h4 class="atx" id="333-代码流程开发规范">3.3.3 代码流程开发规范</h4>
+<pre><code class="fenced-code-block">┌─────────────────────────────────────┐
+│           输入层（ODS/DWD）           │
+└─────────────────────────────────────┘
+                  ▼
+┌─────────────────────────────────────┐
+│       数据处理逻辑（清洗/转换）        │
+│   - 数据清洗                        │
+│   - 数据转换                        │
+│   - 数据关联                        │
+└─────────────────────────────────────┘
+                  ▼
+┌─────────────────────────────────────┐
+│           输出层（目标表）            │
+└─────────────────────────────────────┘</code></pre>
+<h3 class="atx" id="34-建表规范（强校验）">3.4 建表规范（强校验）</h3>
+<ol>
+<li>建表时遵守命名规范，优先建立分区表</li>
+<li>禁止通过程序批量新建以时间戳为后缀的非分区表，需优化为分区表</li>
+<li>每个表需要填写注释，描述表功能、使用说明</li>
+<li>字段注释必须填写，禁止全空备注信息建表</li>
+<li>一个计算刷新任务只允许一个输出表，特殊情况除外</li>
+</ol>
+<h3 class="atx" id="35-计算时间窗口规范（强校验）">3.5 计算时间窗口规范（强校验）</h3>
+<ol>
+<li>全量计算转日增量</li>
+<li>对于跨多日期窗口计算任务（如对ODS近7天数据进行查询及汇总计算）：<ul>
+<li>单分区超过5G：需拆分为每日增量进行计算落地中间数据</li>
+<li>任务执行超过1小时：需拆分为每日增量进行计算落地中间数据</li>
+</ul>
+</li>
+<li>再基于中间数据进行进一步汇总计算</li>
+</ol>
+<h3 class="atx" id="36-sql编码规范">3.6 SQL编码规范</h3>
+<h4 class="atx" id="361-总原则">3.6.1 总原则</h4>
+<ul>
+<li>代码功能完整、健壮</li>
+<li>代码行清晰、整齐，层次分明，结构化强</li>
+<li>代码编写充分考虑执行速度最优的原则</li>
+<li>SQL关键字、保留字使用大写（SELECT、FROM、WHERE、AND、OR等）</li>
+<li>字段名、别名等使用小写</li>
+<li>四个空格为一个缩进量，所有缩进为一个缩进量的整数倍</li>
+<li>对应的括号在同一列位置上</li>
+</ul>
+<h4 class="atx" id="362-select子句格式规范">3.6.2 SELECT子句格式规范</h4>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">-- 字段排列规范</span>
+<span class="token keyword">SELECT</span>
+    userId        <span class="token keyword">AS</span> userId        <span class="token comment">-- 用户ID</span>
+    <span class="token punctuation">,</span> gender      <span class="token keyword">AS</span> gender        <span class="token comment">-- 性别</span>
+    <span class="token punctuation">,</span> city        <span class="token keyword">AS</span> cityName      <span class="token comment">-- 城市名称</span>
+    <span class="token punctuation">,</span> prov        <span class="token keyword">AS</span> provName      <span class="token comment">-- 省份名称</span>
+<span class="token keyword">FROM</span> <span class="token keyword">default</span><span class="token punctuation">.</span>table1
+<span class="token keyword">WHERE</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
+    <span class="token operator">AND</span> ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span>          <span class="token comment">-- 时间分区</span></code></pre>
+<p><strong>规范要点：</strong></p>
+<ul>
+<li>SELECT语句选择的字段按每一行一个字段编排</li>
+<li>SELECT单字后一个缩进量直接跟首个选择字段</li>
+<li>其他字段前导两个缩进量</li>
+<li>逗号分隔符紧跟在第二个字段前面</li>
+<li>AS语句与相应字段在同一行</li>
+</ul>
+<h4 class="atx" id="363-case语句格式规范">3.6.3 CASE语句格式规范</h4>
+<pre><code class="fenced-code-block language-sql"><span class="token keyword">SELECT</span>
+    userId        <span class="token keyword">AS</span> userId
+    <span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">0</span> <span class="token keyword">THEN</span> <span class="token string">'男'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'女'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'未知'</span>
+            <span class="token keyword">ELSE</span> <span class="token string">'未知'</span> <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> gender_cn
+<span class="token keyword">FROM</span> <span class="token keyword">default</span><span class="token punctuation">.</span>table1
+<span class="token keyword">WHERE</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>
+    <span class="token operator">AND</span> ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span></code></pre>
+<p><strong>规范要点：</strong></p>
+<ul>
+<li>WHERE子句在CASE语句同一行并缩进一个缩进量</li>
+<li>每个WHEN子句一行编写</li>
+<li>CASE语句必须包含ELSE子句</li>
+<li>ELSE子句与WHERE子句对齐</li>
+</ul>
+<h4 class="atx" id="364-子嵌套语句格式规范">3.6.4 子嵌套语句格式规范</h4>
+<pre><code class="fenced-code-block language-sql"><span class="token keyword">SELECT</span>
+    userId
+    <span class="token punctuation">,</span> gender_cn
+<span class="token keyword">FROM</span> <span class="token punctuation">(</span>
+    <span class="token keyword">SELECT</span>
+        userId        <span class="token keyword">AS</span> userId
+        <span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">CASE</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">0</span> <span class="token keyword">THEN</span> <span class="token string">'男'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'女'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'未知'</span>
+           <span class="token keyword">ELSE</span> <span class="token string">'未知'</span>
+           <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> gender_cn
+    <span class="token keyword">FROM</span> <span class="token keyword">default</span><span class="token punctuation">.</span>table1
+    <span class="token keyword">WHERE</span> ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span>
+<span class="token punctuation">)</span> a
+<span class="token keyword">WHERE</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token operator">AND</span> a<span class="token punctuation">.</span>gender_cn <span class="token operator">=</span> <span class="token string">'女'</span></code></pre>
+<p><strong>规范要点：</strong></p>
+<ul>
+<li>子嵌套语句与父语句整体缩进一个缩进量</li>
+<li>括号在同一列位置上</li>
+</ul>
+<h4 class="atx" id="365-insert子句格式规范">3.6.5 INSERT子句格式规范</h4>
+<pre><code class="fenced-code-block language-sql"><span class="token comment">-- INSERT子句写在同一行，不需要换行</span>
+<span class="token keyword">INSERT</span> OVERWRITE <span class="token keyword">TABLE</span> demo_table <span class="token keyword">PARTITION</span><span class="token punctuation">(</span>ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span>
+    userId
+    <span class="token punctuation">,</span> gender
+<span class="token keyword">FROM</span> <span class="token keyword">default</span><span class="token punctuation">.</span>source_table
+<span class="token keyword">WHERE</span> ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span></code></pre>
+<h4 class="atx" id="366-运算符间隔规范">3.6.6 运算符间隔规范</h4>
+<ul>
+<li>算数运算符、逻辑运算符前后保留一个空格</li>
+<li>除非超过每行80字符长度限制，否则写在同一行</li>
+</ul>
+<pre><code class="fenced-code-block language-sql"><span class="token keyword">SELECT</span>
+    userId        <span class="token keyword">AS</span> userId
+    <span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">0</span> <span class="token keyword">THEN</span> <span class="token string">'男'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'女'</span>
+            <span class="token keyword">WHEN</span> gender <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'未知'</span>
+            <span class="token keyword">ELSE</span> <span class="token string">'未知'</span> <span class="token keyword">END</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> gender_cn
+<span class="token keyword">FROM</span> <span class="token keyword">default</span><span class="token punctuation">.</span>table1
+<span class="token keyword">WHERE</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token operator">AND</span> ds <span class="token operator">=</span> <span class="token string">'%yyyyMMdd%'</span></code></pre>
+<hr>
+<h2 class="atx" id="四、公共开发规范">四、公共开发规范</h2>
+<h3 class="atx" id="41-数据类型规范">4.1 数据类型规范</h3>
+<p>在保障数据不失真，且不增加存储复杂度和计算量的情况下，尽量减少数据类型数量。</p>
+<p><strong>Apache Doris数据类型规范：</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BIGINT</td>
+<td>ID类字段</td>
+<td>user_id BIGINT</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>标签枚举</td>
+<td>status INT</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td>字符串</td>
+<td>user_name STRING</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td>状态描述</td>
+<td>status_desc STRING</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>日期</td>
+<td>order_date DATE (yyyy-MM-dd)</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>日期时间</td>
+<td>create_time DATETIME (yyyy-MM-dd HH:mm:ss.SSSSSS)</td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>业务数额类</td>
+<td>amount DECIMAL(28,6)</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="42-null字段处理规范">4.2 NULL字段处理规范</h3>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>-999</td>
+<td>维度字段NULL值处理</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>-999999</td>
+<td>维度字段NULL值处理</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>0</td>
+<td>指标字段NULL值处理</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>对于维度字段需设置为-1；对于指标字段需设置为0</p>
+</blockquote>
+<h3 class="atx" id="43-数据冗余规范">4.3 数据冗余规范</h3>
+<p>宽表冗余字段需确保以下原则：</p>
+<ul>
+<li>冗余字段使用频率高（下游3个或以上使用）</li>
+<li>冗余字段引入不应造成数据产生过多延后</li>
+<li>冗余字段与已有字段的重复率不应超过60%</li>
+<li>如需要可选择join或原表拓展</li>
+</ul>
+<h3 class="atx" id="44-公共字段规范">4.4 公共字段规范</h3>
+<p>所有数仓分层中的字段均为小写，且不可出现中文。</p>
+<p><strong>公共字段信息：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>BIGINT</td>
+<td>主键ID</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>DATETIME</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>DATETIME</td>
+<td>更新时间</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>STRING</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td>updater</td>
+<td>STRING</td>
+<td>更新人</td>
+</tr>
+<tr>
+<td>is_deleted</td>
+<td>TINYINT</td>
+<td>是否删除(0否1是)</td>
+</tr>
+<tr>
+<td>ds</td>
+<td>STRING</td>
+<td>分区字段(yyyyMMdd)</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="45-数据表处理规范">4.5 数据表处理规范</h3>
+<h4 class="atx" id="451-增量表">4.5.1 增量表</h4>
+<ul>
+<li>依据时间和其他标签粒度做对应分区或多层分区</li>
+<li>源表必须包含可增量属性字段，确保数据完整性</li>
+<li>记录每次增加的量，不是总量</li>
+<li>只报变化量，无变化不用报</li>
+<li>每天一个分区</li>
+</ul>
+<h4 class="atx" id="452-全量表">4.5.2 全量表</h4>
+<ul>
+<li>每次写入的数据都是最新的</li>
+<li>每次写入的数据都是完整的全量数据</li>
+<li>有无变化都要报</li>
+<li>只有一个分区</li>
+</ul>
+<h4 class="atx" id="453-快照表">4.5.3 快照表</h4>
+<ul>
+<li>按日分区，记录截止数据日期的全量数据</li>
+<li>有无变化都要报</li>
+<li>每次上报所有数据（变化的+没有变化的）</li>
+<li>一天一个分区</li>
+</ul>
+<h4 class="atx" id="454-拉链表">4.5.4 拉链表</h4>
+<ul>
+<li>记录一个事物从开始到当前状态的所有变化信息</li>
+<li>每次上报的是历史记录的最终状态</li>
+<li>记录当前时刻的历史总量</li>
+<li>当前记录存的是当前时间之前所有历史记录的最后变化量</li>
+<li>只有一个分区</li>
+</ul>
+<p><strong>拉链表设计示例：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>开始生效日期</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>结束生效日期</td>
+</tr>
+<tr>
+<td>is_current</td>
+<td>是否当前记录</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="46-事实表划分规范">4.6 事实表划分规范</h3>
+<p>在维度建模中，按粒度划分，数据表分为维度表和事实表，事实表包含三种：</p>
+<table>
+<thead>
+<tr>
+<th>事实表类型</th>
+<th>说明</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务型事实表</td>
+<td>记录事务层面的事实，保存最为原子的数据</td>
+<td>数据在事务发生后发生，粒度为每一行数据</td>
+</tr>
+<tr>
+<td>周期快照型事实表</td>
+<td>有规律的、可预见的时间间隔的业务累计数据</td>
+<td>按天、周、月等做业务统计度量</td>
+</tr>
+<tr>
+<td>累计快照型事实表</td>
+<td>表述业务多个阶段的开始和结束过程</td>
+<td>有多个时间字段，时间不可预测，随阶段变化记录也变化</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="atx" id="五、词根规范">五、词根规范</h2>
+<p>词根属于数仓建设中的规范，属于元数据管理的范畴。</p>
+<h3 class="atx" id="51-词根的作用">5.1 词根的作用</h3>
+<ul>
+<li>用来统一命名，表达同一个含义</li>
+<li>统一表名、字段名、主题域名</li>
+<li>例如：货架业务英文名为rack，所有表、字段用到的地方都叫rack</li>
+</ul>
+<h3 class="atx" id="52-常用词根示例">5.2 常用词根示例</h3>
+<table>
+<thead>
+<tr>
+<th>业务</th>
+<th>词根</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户</td>
+<td>user</td>
+<td>用户相关</td>
+</tr>
+<tr>
+<td>订单</td>
+<td>order</td>
+<td>订单相关</td>
+</tr>
+<tr>
+<td>商品</td>
+<td>product/product_item</td>
+<td>商品相关</td>
+</tr>
+<tr>
+<td>支付</td>
+<td>pay</td>
+<td>支付相关</td>
+</tr>
+<tr>
+<td>渠道</td>
+<td>channel</td>
+<td>渠道相关</td>
+</tr>
+<tr>
+<td>活动</td>
+<td>activity/campaign</td>
+<td>活动相关</td>
+</tr>
+<tr>
+<td>会员</td>
+<td>member</td>
+<td>会员相关</td>
+</tr>
+<tr>
+<td>点击</td>
+<td>click</td>
+<td>点击相关</td>
+</tr>
+<tr>
+<td>曝光</td>
+<td>exposure/impression</td>
+<td>曝光相关</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="53-建表命名决策树">5.3 建表命名决策树</h3>
+<pre><code class="fenced-code-block">                    ┌─────────────┐
+                    │  表的用途？  │
+                    └──────┬──────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+   ┌────▼────┐       ┌─────▼──────┐      ┌────▼────┐
+   │ 中间表  │       │ 原始日志   │      │ 业务展示 │
+   └────┬────┘       └─────┬──────┘      └────┬────┘
+        │                  │                  │
+        │            ┌─────▼──────┐           │
+        │            │   ODS层    │           │
+        │            └────────────┘           │
+        │                                      │
+   ┌────▼────┐                            ┌────▼────┐
+   │有group? │                            │  ADS层  │
+   └────┬────┘                            └─────────┘
+        │
+   ┌────▼────┐
+   │  DWD层  │
+   └────┬────┘
+        │
+   ┌────▼────────────┐
+   │ 宽表？多行为汇总│
+   └──┬───────────┬──┘
+      │           │
+   ┌──▼──┐     ┌─▼────┐
+   │DWS层│     │DWM层 │
+   └─────┘     └──────┘</code></pre>
+<hr>
+<h2 class="atx" id="六、口径规范">六、口径规范</h2>
+<h3 class="atx" id="61-指标口径规范">6.1 指标口径规范</h3>
+<ul>
+<li>保证主题域内指标口径一致，无歧义</li>
+<li>指标命名、描述、计算逻辑、值说明需统一</li>
+<li>指标加工变更需保存版本，方便回溯或追源</li>
+</ul>
+<h3 class="atx" id="62-指标说明规范模板">6.2 指标说明规范模板</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>英文名称</td>
+<td>指标英文名</td>
+<td>daily_active_user</td>
+</tr>
+<tr>
+<td>中文名称</td>
+<td>指标中文名</td>
+<td>日活跃用户数</td>
+</tr>
+<tr>
+<td>指标描述</td>
+<td>指标含义描述</td>
+<td>当日活跃用户数量</td>
+</tr>
+<tr>
+<td>计算逻辑</td>
+<td>具体计算方式</td>
+<td>COUNT(DISTINCT user_id) WHERE...</td>
+</tr>
+<tr>
+<td>值说明</td>
+<td>取值范围及含义</td>
+<td>大于等于0的整数</td>
+</tr>
+<tr>
+<td>指标调度周期</td>
+<td>更新频率</td>
+<td>天级(T+1)</td>
+</tr>
+<tr>
+<td>指标示例</td>
+<td>示例数据</td>
+<td>1000000</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="atx" id="七、需求分析规范">七、需求分析规范</h2>
+<h3 class="atx" id="71-需求规范模板">7.1 需求规范模板</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分析维度</td>
+<td>分析的角度</td>
+<td>时间、地区、产品类型</td>
+</tr>
+<tr>
+<td>维度层级</td>
+<td>维度层级结构</td>
+<td>时间：年-月-日，最小粒度日<br>地区：省-市，最小粒度市<br>产品类型：天猫、淘宝、聚划算</td>
+</tr>
+<tr>
+<td>分析指标</td>
+<td>需要分析的指标</td>
+<td>DAU、订单数、支付金额</td>
+</tr>
+<tr>
+<td>数据来源</td>
+<td>数据来源表</td>
+<td>用户日志埋点表、用户订单支付表</td>
+</tr>
+<tr>
+<td>业务对象</td>
+<td>业务使用对象</td>
+<td>数据大盘、APP运营、高层报告</td>
+</tr>
+<tr>
+<td>备注</td>
+<td>其他说明</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="72-数仓构建流程">7.2 数仓构建流程</h3>
+<pre><code class="fenced-code-block">┌─────────────┐
+│ 需求分析    │
+└──────┬──────┘
+       │
+┌──────▼──────┐
+│ 数据调研    │
+└──────┬──────┘
+       │
+┌──────▼──────┐
+│ 模型设计    │
+└──────┬──────┘
+       │
+┌──────▼──────┐
+│ ETL开发     │
+└──────┬──────┘
+       │
+┌──────▼──────┐
+│ 数据验证    │
+└──────┬──────┘
+       │
+┌──────▼──────┐
+│ 上线发布    │
+└─────────────┘</code></pre>
+<hr>
+<h2 class="atx" id="八、附录">八、附录</h2>
+<h3 class="atx" id="附录1：bg事业群代码">附录1：BG事业群代码</h3>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WXG</td>
+<td>微信事业群</td>
+</tr>
+<tr>
+<td>PCG</td>
+<td>平台与内容事业群</td>
+</tr>
+<tr>
+<td>IEG</td>
+<td>互动娱乐事业群</td>
+</tr>
+<tr>
+<td>CSIG</td>
+<td>云与智慧产业事业群</td>
+</tr>
+<tr>
+<td>TEG</td>
+<td>技术工程事业群</td>
+</tr>
+<tr>
+<td>CDG</td>
+<td>企业发展事业群</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="附录2：刷新周期代码">附录2：刷新周期代码</h3>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h</td>
+<td>小时</td>
+</tr>
+<tr>
+<td>d</td>
+<td>天</td>
+</tr>
+<tr>
+<td>w</td>
+<td>周</td>
+</tr>
+<tr>
+<td>m</td>
+<td>月</td>
+</tr>
+<tr>
+<td>q</td>
+<td>季度</td>
+</tr>
+<tr>
+<td>y</td>
+<td>年</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="附录3：存储策略代码">附录3：存储策略代码</h3>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>增量(Incremental)</td>
+</tr>
+<tr>
+<td>f</td>
+<td>全量(Full)</td>
+</tr>
+<tr>
+<td>di</td>
+<td>天级增量</td>
+</tr>
+<tr>
+<td>df</td>
+<td>天级全量</td>
+</tr>
+<tr>
+<td>hi</td>
+<td>小时级增量</td>
+</tr>
+<tr>
+<td>hf</td>
+<td>小时级全量</td>
+</tr>
+</tbody></table>
+<h3 class="atx" id="附录4：电信行业主题域设计参考">附录4：电信行业主题域设计参考</h3>
+<table>
+<thead>
+<tr>
+<th>主题域</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户主题域</td>
+<td>客户基本信息、客户资料</td>
+</tr>
+<tr>
+<td>产品主题域</td>
+<td>产品目录、产品资费</td>
+</tr>
+<tr>
+<td>计费主题域</td>
+<td>账务、缴费</td>
+</tr>
+<tr>
+<td>订购主题域</td>
+<td>订购关系、服务使用</td>
+</tr>
+<tr>
+<td>营销主题域</td>
+<td>营销活动、渠道管理</td>
+</tr>
+<tr>
+<td>网络主题域</td>
+<td>网络资源、网络性能</td>
+</tr>
+<tr>
+<td>服务主题域</td>
+<td>服务请求、故障处理</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="atx" id="九、参考资料">九、参考资料</h2>
+<ol>
+<li><a href="https://cloud.tencent.com/developer/article/2285006">数仓命名规范大全 - 腾讯云开发者社区</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1841349">数据仓库设计和规范—数仓分层和规范 - 腾讯云</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/2480922">大数据仓库开发规范示例 - 腾讯云</a></li>
+<li><a href="https://www.cnblogs.com/johnnyzen/p/19142478">腾讯数据仓库规范体系 - 博客园</a></li>
+<li><a href="https://mp.weixin.qq.com/s/SL2m0ZFvmP3Pg_OnVg53EQ">腾讯数据仓库规范体系（PPT）- 微信公众号「老范聊数据」</a></li>
+<li><a href="https://www.tencentcloud.com/zh/products/wedata">腾讯云数据开发治理平台WeData</a></li>
+</ol>
+<hr>
+<h2 class="atx" id="版本历史">版本历史</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>作者</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>2026-06-05</td>
+<td>Claude</td>
+<td>基于腾讯公开资料整理初始版本</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>2026-06-05</td>
+<td>Claude</td>
+<td>补充微信公众号PPT资料，新增半财年/财年初截止时间维度</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>注：</strong> 本文档基于腾讯公开的数仓规范资料整理而成，供学习和参考使用。实际应用中需根据企业具体业务场景进行调整和适配。</p>
+</article>
+</body>
+</html>
