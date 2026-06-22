@@ -39,7 +39,7 @@ allowed-tools: [Read, Grep, Glob, Bash]
 |--------|---------|-----------|
 | `order_info` | 服务"下单/支付"过程 | 交易域 |
 | `user_base` | 服务"注册/登录"过程 | 用户域 |
-| `order_info_ex`（疑似重复） | 与 order_info 同过程 | 交易域（待 dup-detection 确认） |
+| `order_info_ex`（疑似重复） | 与 order_info 同过程 | 交易域（标准化标注"疑似重复"；深度合并由 dup-detection + 迁移处理） |
 
 ### Step 3：域内整理
 - **命名**：改为 `{layer}_{domain}_{entity}_{granularity}`（如 `order_info` → `dwd_trade_order_detail`）
@@ -101,7 +101,7 @@ mappings:
 - [ ] 表名符合 `{layer}_{domain}_{entity}_{granularity}` 规范
 - [ ] 字段名 snake_case，无大小写混用
 - [ ] 粒度单一（混杂粒度已拆分）
-- [ ] 版本/副本后缀已清理（结合 dup-detection）
+- [ ] 版本/副本后缀已清理（明显重复标注"疑似"，深度合并留待 dup-detection + 迁移）
 - [ ] 迁移映射表经业务/技术评审确认
 
 ## 关联

@@ -110,9 +110,9 @@ cat > "$PROJECT_PATH/requirements/raw/raw-requirement.md" << 'EOF'
 
 | 系统 | 类型 | 表/Topic | 数据量 | 备注 |
 |------|------|---------|--------|------|
-| 订单系统 | MySQL | orders, order_items | 日增100万 | |
-| 用户系统 | MySQL | users | 总量5000万 | |
-| 商品系统 | MySQL | products, categories | 总量100万 | |
+| 订单系统 | MySQL (OLTP源) | orders, order_items | 日增100万 | 待DataWorks同步入ADB |
+| 用户系统 | MySQL (OLTP源) | users | 总量5000万 | 待DataWorks同步入ADB |
+| 商品系统 | MySQL (OLTP源) | products, categories | 总量100万 | 待DataWorks同步入ADB |
 
 ## 期望输出
 <!-- 描述期望的分析输出 -->

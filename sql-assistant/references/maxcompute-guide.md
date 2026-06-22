@@ -106,7 +106,7 @@ FROM source_orders;
 
 ### 2. 函数差异
 
-| 功能 | MySQL | MaxCompute |
+| 功能 | ADB MySQL | MaxCompute |
 |------|-------|------------|
 | 当前日期 | `CURDATE()` | `GETDATE()` |
 | 日期格式化 | `DATE_FORMAT(d,f)` | `DATE_FORMAT(d,f)` |

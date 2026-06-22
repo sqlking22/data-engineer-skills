@@ -8,7 +8,11 @@ description: |
 
 # ETL SQL 编码规范
 
-> 本文件是 ETL SQL 编码合规判定的**总入口**，供 `/review-sql` 等审查命令读取。SQL 规范按主题分散在 `sql-assistant/references/` 下，按需读取对应文件。
+> 本文件是 ETL SQL 编码合规判定的**总入口**，供 `/review-sql`（团队规范合规审查，独立 skill）读取。
+>
+> **易混命令区分**：`/review-sql`（独立 skill，对照本文件 checklist 做团队编码规范合规审查）≠ `/sql-review`（sql-assistant 阶段命令，侧重代码质量/性能/可读性审查）。两者可串联：`/sql-review` 改质量 → `/review-sql` 查合规。
+>
+> SQL 规范按主题分散在 `sql-assistant/references/` 下，按需读取对应文件。
 
 ## 规范文件导航
 

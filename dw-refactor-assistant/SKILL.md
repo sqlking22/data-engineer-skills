@@ -44,7 +44,8 @@ description: |
 │                              ▼                                              │
 │   ┌──────────────────────────────────────────────────────────────────────┐   │
 │   │                    阶段3：血缘与影响分析                               │   │
-│   │   /lineage-scan  →  血缘图谱、影响范围、迁移路径、风险评估             │   │
+│   │   /lineage-scan · /dup-detection · /impact-analysis                  │   │
+│   │   → 血缘图谱、重复模型、影响范围、迁移路径、风险评估                   │   │
 │   └──────────────────────────────────────────────────────────────────────┘   │
 │                              │                                              │
 │                              ▼                                              │
@@ -559,7 +560,7 @@ components:
 /dw-refactor-assistant 端到端重构：交易域数仓
 # Step 1: 现状盘点 → /asset-inventory
 # Step 2: 模型标准化 → /model-standardize
-# Step 3: 血缘分析 → /lineage-scan
+# Step 3: 血缘与影响分析 → /lineage-scan · /dup-detection · /impact-analysis
 # Step 4: 迁移执行 → /refactor-plan
 # Step 5: 治理建设 → /governance-setup
 ```
@@ -573,8 +574,9 @@ components:
 # 阶段2：模型标准化
 /model-standardize 基于资产清单建立规范
 
-# 阶段3：血缘分析
+# 阶段3：血缘与影响分析
 /lineage-scan 扫描 dwd_order_detail_1 的血缘
+/dup-detection 检测交易域的重复模型
 /impact-analysis 分析合并该表的影响
 
 # 阶段4：迁移执行
@@ -641,13 +643,13 @@ components:
 - ✅ 资产盘点 (/asset-inventory)
 - ✅ 模型标准化 (/model-standardize)
 - ✅ 血缘扫描 (/lineage-scan)
+- ✅ 重复检测 (/dup-detection)
 - ✅ 影响分析 (/impact-analysis)
 - ✅ 迁移计划 (/refactor-plan)
 - ✅ 治理框架 (/governance-setup)
 
 ### v1.1.0 (计划)
 - 🔄 自动化血缘扫描脚本
-- 🔄 重复模型智能识别
 - 🔄 迁移进度看板
 
 ### v2.0.0 (计划)

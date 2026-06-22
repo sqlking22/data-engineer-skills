@@ -12,6 +12,8 @@ allowed-tools: [Read, Grep, Glob, Edit, Write, Bash]
 
 验证数据在跨层流转（ODS→DWD→DWS→ADS）、跨表关联时的一致性。位于测试金字塔中层。
 
+> **输出形态**：测试用例以声明式 YAML（`test_cases_<scenario>.yaml`）定义，由 pytest 框架（见 [test-standards.md](test-standards.md)）加载执行——YAML 是用例数据，pytest 是执行器。
+
 ## 工作流
 
 1. **识别测试场景** — 解析对账对象（哪两层、哪些表、哪些维度）
@@ -26,6 +28,7 @@ allowed-tools: [Read, Grep, Glob, Edit, Write, Bash]
 | 跨层对账 | DWD→DWS 汇总一致性 | 两层按相同维度聚合后金额/数量相等 |
 | 跨表关联 | 事实表与维度表关联一致性 | 关联后字段非空、口径一致 |
 | 历史对比 | 同环比 | 当期与上期差异在合理范围 |
+| SCD2 历史追溯 | 维度属性随时间变化 | 某时间点取到正确版本（valid_from≤t<valid_to，is_current） |
 | 口径校验 | 同一指标多路径计算 | 两条计算路径结果一致 |
 | 总分核对 | 明细求和 = 汇总值 | `SUM(明细) = 汇总表值` |
 

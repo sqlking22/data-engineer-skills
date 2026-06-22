@@ -12,6 +12,8 @@ allowed-tools: [Read, Grep, Glob, Edit, Write, Bash]
 
 验证查询/ETL 性能是否满足基线，并支持回归对比（性能不退化）。位于测试金字塔顶层（量少、成本高）。
 
+> **输出形态**：性能用例以声明式 YAML（`perf_report_<target>.yaml`）定义，由 pytest 框架（见 [test-standards.md](test-standards.md)）加载执行；压测脚本可为 pytest 或独立 shell。
+
 ## 工作流
 
 1. **识别测试目标** — 解析目标查询/表/ETL 任务

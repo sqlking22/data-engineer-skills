@@ -5,7 +5,7 @@ description: |
   为后续建模、SQL开发、数据质量、数据测试提供清晰输入。
   包含需求解析、需求澄清、需求转化三大核心功能。
   当用户有数据开发需求但不知道如何落地、或需要梳理复杂业务需求时触发。
-  触发词：需求分析、业务需求、帮我设计、数据开发需求、需求澄清、需求梳理、需求转化。
+  触发词：需求分析、业务需求、数据开发需求、需求澄清、需求梳理、需求转化、需求文档。
 ---
 
 # 数据开发需求分析助手
@@ -185,7 +185,7 @@ parse_result:
       dimensions: ["日期", "地区", "类目"]
 
   data_sources:
-    - type: "MySQL"
+    - type: "MySQL (OLTP 源，待同步入 ADB)"
       system: "订单系统"
       tables: ["orders", "order_items", "users"]
       estimated_size: "日增100万订单"
@@ -332,25 +332,19 @@ quality_hints:
 
 #### 4. 下游 Skill 调用指令 (outputs/skill_commands.md)
 ```bash
-# 根据需求转化结果，建议按以下顺序调用下游 Skill：
+# 根据需求转化结果，建议按以下顺序调用下游 Skill（联动参数自动注入 requirement_package）：
 
 ## Step 1: 数据建模
-/model-design 基于以下规格设计维度模型：
-- 业务域：电商销售分析
-- 事实表：订单项级别，包含数量、金额度量
-- 维度：用户(SCD2)、商品(SCD2)、日期
-- 数据源：MySQL订单系统
+/modeling-assistant --from-requirement
+# 消费 modeling_hints（业务过程/粒度/需追踪历史的属性），由 modeling 决定事实表结构与 SCD 策略
 
-## Step 2: SQL开发
-/sql-gen 生成订单事实表抽取SQL，要求：
-- 从MySQL orders表和order_items表抽取
-- 增量同步，使用updated_at识别变更
-- 关联用户表获取用户维度属性
+## Step 2: SQL 开发
+/sql-assistant --from-model
+# 消费 modeling_package 生成 DDL 与 ETL SQL（增量策略由 sql 模块定）
 
 ## Step 3: 数据质量
-/dq-rule-gen 为fct_orders表生成质量规则：
-- 订单ID非空唯一
-- 金额正数且在合理范围
+/dq-assistant --from-sql
+# 消费 sql_package + quality_hints（订单唯一/金额合理），由 dq 生成具体规则
 ```
 
 ---
@@ -387,10 +381,10 @@ quality_hints:
 │  阶段3: 需求转化 (/requirement-transform)                     │
 │  ├─ 输入：经确认的需求                                        │
 │  ├─ 处理：general-purpose Agent                              │
-│  └─ 输出：技术规格包 (specs/)                                  │
-│       - 数据模型规格                                          │
-│       - 数据同步规格                                          │
-│       - 质量规则建议                                          │
+│  └─ 输出：需求意图包 (requirement_package.yaml)               │
+│       - 建模需求意图 (modeling_hints)                         │
+│       - 同步需求意图 (sync_hints)                             │
+│       - 质量需求意图 (quality_hints)                          │
 │       - 下游Skill调用指令                                      │
 └─────────────────────────────────────────────────────────────┘
                      │
@@ -470,10 +464,10 @@ requirement_package:
     existing_systems: ["MySQL订单库", "Redis缓存"]
     constraints: ["不能影响源库性能"]
 
-  specifications:
-    model_spec: {...}
-    data_sync_spec: {...}
-    dq_spec: {...}
+  # 下游意图（hints，不预决实现；详见 requirement-transform.md）
+  modeling_hints: {...}
+  sync_hints: {...}
+  quality_hints: {...}
 ```
 
 ---

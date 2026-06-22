@@ -12,6 +12,8 @@ allowed-tools: [Read, Grep, Glob, Edit, Write, Bash]
 
 为单张表生成字段级单元测试用例，验证模型最基本约束。单元测试位于测试金字塔底层（快、隔离、量大）。
 
+> **输出形态**：测试用例以声明式 YAML（`test_cases_<table>.yaml`）定义，由 pytest 框架（见 [test-standards.md](test-standards.md)）加载执行——YAML 是用例数据，pytest 是执行器，两者是"定义 vs 执行"关系，不冲突。
+
 ## 工作流
 
 1. **解析测试对象** — 读取表结构 / modeling_package / dq_package
