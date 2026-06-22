@@ -284,41 +284,20 @@ reuse_process:
 
 ## 4. 规范自动化检查
 
+> **职责边界**：本节聚焦**结构/规范类**自动化检查（命名、分层、孤儿表、跨层/循环依赖），这些是 dw-refactor 治理专属。
+> **数据质量类检查**（任务失败率、数据新鲜度、空值率、唯一性、一致性等规则定义、SQL 实现与告警配置）属于 dq-assistant 职责，详见 `dq-assistant/references/data-quality-standards.md`。治理流程触发 dq 规则，但不在此重新定义。
+
 ### 4.1 每日检查
 
 ```yaml
 daily_checks:
-  
-  # 任务状态检查
-  task_status:
+  # 数据质量类检查（任务失败率、数据新鲜度、空值率等）
+  # 规则定义、SQL 实现与告警配置详见 dq-assistant/references/data-quality-standards.md
+  # 治理层仅订阅 dq 告警结果，纳入月度治理报告
+  dq_subscription:
     schedule: "每天 09:00"
-    checks:
-      - name: "任务失败率"
-        sql: |
-          SELECT COUNT(*) FROM task_log 
-          WHERE status = 'failed' 
-          AND run_date = CURRENT_DATE
-        threshold: "< 5%"
-        alert: "钉钉群通知"
-        
-      - name: "任务延迟率"
-        sql: |
-          SELECT COUNT(*) FROM task_log 
-          WHERE actual_end_time > scheduled_end_time
-        threshold: "< 10%"
-        alert: "邮件通知"
-        
-  # 数据新鲜度检查
-  data_freshness:
-    schedule: "每天 10:00"
-    checks:
-      - name: "核心表更新检查"
-        tables:
-          - "dwd_trade_order_detail"
-          - "dws_trade_user_1d"
-          - "ads_sales_report"
-        condition: "last_modified < NOW() - INTERVAL 1 DAY"
-        alert: "钉钉群通知"
+    source: "dq-assistant"
+    action: "订阅告警，汇总至治理月报"
 ```
 
 ### 4.2 每周检查
@@ -414,111 +393,54 @@ monthly_audit:
 
 ## 5. 公共资产库
 
-### 5.1 公共模型库
+> **职责边界**：本节描述**公共资产的治理职责**（owner 制度、准入/退出流程、复用机制）。
+> **公共模型的字段结构与 SCD 策略**（如 dim_user/dim_product/dim_date 的具体字段、代理键、SCD2 实现）属 modeling-assistant 职责，详见 `modeling-assistant/references/data-modeling-standards.md`。
+> **指标字典的完整定义**（原子/派生/衍生指标的编码、口径、修饰词、计算公式）属 modeling-assistant 职责，详见 `modeling-assistant/references/onedata-methodology.md`。
+
+### 5.1 公共模型库（治理职责）
 
 ```yaml
 public_models:
+  # 治理职责：纳入/退出/owner/复用流程
+  # 具体模型字段结构与 SCD 策略见 modeling-assistant/references/data-modeling-standards.md
   
-  # 维度模型
-  dimensions:
+  registry:
     - name: "dim_user"
-      description: "用户一致性维度（SCD2）"
+      type: "一致性维度（SCD2）"
       owner: "用户域"
-      owner_team: "用户数据组"
-      fields:
-        - "user_sk (PK)"
-        - "user_id (NK)"
-        - "username"
-        - "email"
-        - "user_level"
-        - "city"
-        - "valid_from"
-        - "valid_to"
-        - "is_current"
       access_process: "申请 → 域负责人审批 → 授权"
       
     - name: "dim_product"
-      description: "商品一致性维度（SCD2）"
+      type: "一致性维度（SCD2）"
       owner: "商品域"
-      fields:
-        - "product_sk (PK)"
-        - "product_id (NK)"
-        - "product_name"
-        - "category_id"
-        - "brand"
-        - "price"
-        - ...
-        
+      
     - name: "dim_date"
-      description: "日期一致性维度"
+      type: "一致性维度"
       owner: "数据平台"
-      fields:
-        - "date_key"
-        - "date_value"
-        - "year"
-        - "quarter"
-        - "month"
-        - "week"
-        - "is_weekend"
-        - ...
-        
-  # 公共中间表
-  intermediate:
+      
     - name: "dwd_trade_order_detail"
-      description: "交易订单明细标准表"
+      type: "公共明细表"
       owner: "交易域"
-      usage:
-        - "所有订单相关分析的基础表"
-        - "下游 DWS/ADS 直接引用"
+      usage: "所有订单相关分析的基础表，下游 DWS/ADS 直接引用"
+      
+  governance_rules:
+    admission: "经数据架构评审委员会批准后方可纳入公共库"
+    owner_must: "必须有明确 owner 与 owner_team"
+    retirement: "长期无消费（孤儿）或被新模型替代后，走下线流程退出公共库"
 ```
 
-### 5.2 指标字典
+### 5.2 指标字典（治理职责）
 
 ```yaml
 metrics_dictionary:
+  # 治理职责：保证指标"有字典、有 owner、无重复口径"
+  # 指标定义、编码、口径、修饰词、计算公式见 modeling-assistant/references/onedata-methodology.md
   
-  # 原子指标
-  atomic_metrics:
-    - code: "AT_TRADE_001"
-      name: "订单数"
-      english_name: "order_count"
-      business_process: "下单"
-      definition: "COUNT(DISTINCT order_id)"
-      data_type: "BIGINT"
-      owner: "交易域"
-      
-    - code: "AT_TRADE_002"
-      name: "支付金额"
-      english_name: "pay_amount"
-      business_process: "支付"
-      definition: "SUM(pay_amount)"
-      data_type: "DECIMAL(18,2)"
-      owner: "交易域"
-      
-  # 派生指标
-  derived_metrics:
-    - code: "DR_TRADE_001"
-      name: "最近7天订单数"
-      atomic_metric: "AT_TRADE_001"
-      modifiers:
-        - time_window: "7d"
-      owner: "交易域"
-      
-    - code: "DR_TRADE_002"
-      name: "最近30天广东省支付金额"
-      atomic_metric: "AT_TRADE_002"
-      modifiers:
-        - region: "广东省"
-        - time_window: "30d"
-      owner: "交易域"
-      
-  # 衍生指标
-  composite_metrics:
-    - code: "CO_TRADE_001"
-      name: "客单价"
-      formula: "AT_TRADE_002 / AT_TRADE_001"
-      definition: "支付金额 / 订单数"
-      owner: "交易域"
+  governance_rules:
+    must_registered: "所有上线指标必须在指标字典注册"
+    no_duplicate: "同一业务口径禁止多个指标定义（重复口径触发合并）"
+    owner_must: "每个指标必须有 owner 域"
+    change_control: "指标口径变更走 P0/P1 变更审批"
 ```
 
 ---

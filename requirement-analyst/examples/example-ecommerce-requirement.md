@@ -2,6 +2,8 @@
 
 本示例展示如何使用 requirement-analyst Skill 完成从原始需求到技术规格的完整分析流程。
 
+> **数据源说明**：示例中订单/用户/商品系统的 `type: "MySQL"` 指**业务侧 OLTP 源库**（待经 DataWorks 同步入数仓），并非数仓底座。本套件生成的 SQL 仅面向 AnalyticDB MySQL / MaxCompute。
+
 ---
 
 ## 场景背景

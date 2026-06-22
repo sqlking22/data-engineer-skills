@@ -45,7 +45,9 @@ description: |
 
 | 需要时读取 | 文件 | 内容 |
 |-----------|------|------|
-| SQL编写规范 | [references/sql-standards.md](references/sql-standards.md) | 命名规范、方言差异、优化checklist、ADB/MaxCompute方言 |
+| SQL编写规范 | [references/sql-standards.md](references/sql-standards.md) | 命名规范、代码格式、反模式速查、性能 checklist、函数速查 |
+| ADB MySQL 方言 | [references/adb-mysql-guide.md](references/adb-mysql-guide.md) | ADB DDL/DML/函数/类型/索引设计/性能优化/限制约束 |
+| MaxCompute 方言 | [references/maxcompute-guide.md](references/maxcompute-guide.md) | MaxCompute DDL/DML/函数/MAPJOIN/分区裁剪/动态分区 |
 | SQL生成指南 | [references/sql-generator.md](references/sql-generator.md) | 生成模板、方言适配 |
 | SQL审查指南 | [references/sql-reviewer.md](references/sql-reviewer.md) | 审查维度、问题清单、最佳实践 |
 | 执行计划分析 | [references/sql-explain.md](references/sql-explain.md) | EXPLAIN解读、瓶颈识别、索引优化 |

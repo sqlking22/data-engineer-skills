@@ -35,7 +35,7 @@ description: |
 │                        ▼                                           │
 │   ┌────────────────────────────────────────────────────┐          │
 │   │  阶段2: 需求澄清 (requirement-clarify)              │          │
-│   │  Agent: Explore（交互式）                           │          │
+│   │  Agent: general-purpose（交互式）                    │          │
 │   │  功能：识别需求缺口，生成澄清问题                    │          │
 │   │        - 歧义检测                                   │          │
 │   │        - 缺失信息识别                               │          │
@@ -201,8 +201,8 @@ parse_result:
 
 ### 功能2：需求澄清助手 (/requirement-clarify)
 
-**Agent类型**：Explore
-**工具权限**：Read, Grep, Glob
+**Agent类型**：general-purpose
+**工具权限**：Read, Grep, Glob, Write
 
 **使用场景**：
 - 需求解析后发现信息缺失
@@ -289,78 +289,42 @@ Q2: "用户等级如果发生变化，分析时需要看当时的等级还是最
 
 **输出物**：
 
-#### 1. 数据模型规格 (specs/model_spec.yaml)
+> **职责边界**：需求 transform 阶段只产出**需求意图/关注点**（hints），供下游模块据此决策；**不预决建模结构、SCD 策略、同步实现、质量规则**——这些由 `/modeling-assistant`、`/sql-assistant`、`/dq-assistant` 各自决定。
+
+#### 1. 建模需求意图 (specs/modeling_hints.yaml)
 ```yaml
-model_spec:
-  architecture: "星型模型"
-
-  fact_tables:
-    - name: fct_orders
-      grain: "订单项级别"
-      description: "订单事实表"
-      dimensions:
-        - dim_date
-        - dim_user
-        - dim_product
-      measures:
-        - name: quantity
-          type: "integer"
-        - name: amount
-          type: "decimal"
-
-  dimensions:
-    - name: dim_user
-      scd_type: 2
-      natural_key: user_id
-      attributes:
-        - name: user_level
-          track_history: true
-        - name: city
-          track_history: true
+# 需求对建模的期望；具体事实表/维度结构、SCD 策略由 /modeling-assistant 决定
+modeling_hints:
+  business_processes: ["下单", "支付"]              # 需分析的业务过程
+  analysis_grain: "订单项级别"                       # 期望的分析最细粒度
+  dimensions_of_interest: ["用户", "商品", "日期", "地区"]
+  key_measures: ["订单金额", "订单数量"]
+  history_tracking:                                  # 需保留历史的属性（SCD 策略由建模定）
+    - entity: "用户"
+      attributes: ["用户等级", "城市"]
 ```
 
-#### 2. 数据同步规格 (specs/data_sync_spec.yaml)
+#### 2. 同步需求意图 (specs/sync_hints.yaml)
 ```yaml
-data_sync_spec:
-  pipelines:
-    - name: order_sync
-      source:
-        type: "MySQL"
-        connection: "order_db"
-        tables: ["orders", "order_items"]
-      extract:
-        strategy: "incremental"
-        watermark_column: "updated_at"
-      transform:
-        logic:
-          - "join_orders_items"
-          - "calculate_amount"
-      load:
-        target: "AnalyticDB MySQL"
-        mode: "upsert"
-        unique_key: "order_id"
+# 需求对数据时效/来源的期望；具体增量/水印/upsert 方案由 ETL 开发决定
+sync_hints:
+  source_systems:
+    - system: "订单系统"
+      type: "MySQL (OLTP 源，待同步入 ADB)"
+  freshness_requirement: "T+1（每天 08:00 前出数据）"
+  data_volume: "日增约 100 万订单"
 ```
 
-#### 3. 数据质量规格 (specs/dq_spec.yaml)
+#### 3. 质量需求意图 (specs/quality_hints.yaml)
 ```yaml
-quality_rules:
-  - table: fct_orders
-    column: order_id
-    rules:
-      - type: not_null
-        severity: error
-      - type: unique
-        severity: error
-
-  - table: fct_orders
-    column: amount
-    rules:
-      - type: positive
-        severity: error
-      - type: range
-        min: 0
-        max: 1000000
-        severity: warning
+# 需求关注的数据质量要点；具体规则由 /dq-assistant 生成
+quality_hints:
+  - concern: "订单标识唯一、非空"
+    importance: "critical"
+  - concern: "金额合理（非负、合理范围）"
+    importance: "high"
+  - concern: "用户等级历史可追溯"
+    importance: "high"
 ```
 
 #### 4. 下游 Skill 调用指令 (outputs/skill_commands.md)
@@ -408,7 +372,7 @@ quality_rules:
 ┌─────────────────────────────────────────────────────────────┐
 │  阶段2: 需求澄清 (/requirement-clarify)                       │
 │  ├─ 输入：解析后的需求                                        │
-│  ├─ 处理：Explore Agent (交互式分析)                         │
+│  ├─ 处理：general-purpose Agent (交互式分析)                 │
 │  └─ 输出：需求缺口报告 + 确认问题清单                          │
 │       - 歧义检测                                              │
 │       - 缺失信息识别                                          │

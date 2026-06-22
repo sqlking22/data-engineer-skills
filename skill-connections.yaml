@@ -144,6 +144,7 @@ skill_connections:
       mapping:
         - "sql_queries → performance_test_targets"
         - "execution_plans → optimization_hints"
+      command: "/test-engineer --from-sql"
 
     # dq-assistant 输出
     - from: dq-assistant
@@ -277,7 +278,7 @@ skill_connections:
       workflow: full_development_pipeline
 
     - name: 快速建模开发
-      command: "/modeling-assistant → /sql-assistant"
+      command: "/modeling-assistant → /sql-assistant → /dq-assistant"
       workflow: modeling_to_sql
 
     - name: SQL开发测试

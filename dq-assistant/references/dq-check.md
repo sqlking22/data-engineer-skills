@@ -263,28 +263,18 @@ FROM {{ table }}
 - COMP_004 address非空检查 (上周150条 → 本周0条)
 ```
 
-## 问题修复SQL生成
+## 问题定位SQL生成
 
-自动生成修复SQL：
+> **原则**：质量门只检查、不修复。dq-check 产出**问题定位 SQL**（SELECT）供数据 owner 排查，**不自动生成 UPDATE/DELETE 改数**——是否修复、如何修复由数据 owner 决策，避免质量工具误改生产数据。
 
 ```sql
 -- 问题1: status字段异常值
 -- 发现23条异常记录，异常值: unknown(15), temp(8)
 
--- 查看异常记录
+-- 定位异常记录（交数据 owner 排查决策，质量工具不自动改数）
 SELECT order_id, status, created_at
 FROM orders
 WHERE status NOT IN ('pending', 'paid', 'shipped', 'completed', 'cancelled');
-
--- 修复建议 (根据实际情况选择)
--- 方案A: 更新为默认值
-UPDATE orders
-SET status = 'pending'
-WHERE status NOT IN ('pending', 'paid', 'shipped', 'completed', 'cancelled');
-
--- 方案B: 删除测试数据
-DELETE FROM orders
-WHERE status = 'temp';
 ```
 
 ## 检查模式

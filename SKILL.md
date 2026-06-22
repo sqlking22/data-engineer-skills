@@ -88,7 +88,7 @@ description: |
 |------|------|------|---------|
 | **DataWorks**（标准版） | 数据开发治理平台 | 数据开发、调度、治理 | [官方文档](https://help.aliyun.com/product/72772.html) |
 | **Quick BI** | 数据可视化 | 报表制作、数据可视化 | [官方文档](https://help.aliyun.com/product/43570.html) |
-| **Flink**（实时计算） | 实时计算引擎 | 实时数据同步与处理 | [官方文档](https://help.aliyun.com/product/43570.html) |
+| **Flink**（实时计算） | 实时计算引擎 | 实时数据同步与处理 | [官方文档](https://help.aliyun.com/zh/flink/) |
 | **Kafka**（消息队列） | 消息中间件 | 埋点日志采集与传输 | [官方文档](https://help.aliyun.com/product/26157.html) |
 
 ### 自建工具（部署于阿里云 ECS）
@@ -211,6 +211,8 @@ test_package.yaml
 | 建模→SQL | `/sql-assistant --from-model` | sql_package.yaml |
 | SQL→质量 | `/dq-assistant --from-sql` | dq_package.yaml |
 | 质量→测试 | `/test-engineer --from-dq` | test_package.yaml |
+
+> 完整联动关系（含 `/sql-assistant --from-requirement`、`/dq-assistant --from-model`、`/test-engineer --from-model` 等）见 [skill-connections.yaml](skill-connections.yaml)。
 
 ---
 

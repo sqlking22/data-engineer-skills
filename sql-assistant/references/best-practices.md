@@ -8,7 +8,7 @@ description: |
 # SQL 开发最佳实践
 
 > 本文沉淀团队在 SQL 开发阶段的实战经验，配套 [SKILL.md](../SKILL.md) 一起使用。
-> 详细的方言规范见 [sql-standards.md](sql-standards.md)。
+> 详细的方言规范见 [adb-mysql-guide.md](adb-mysql-guide.md) 与 [maxcompute-guide.md](maxcompute-guide.md)；SQL 通用规范见 [sql-standards.md](sql-standards.md)。
 
 ## 1. 核心原则速查
 

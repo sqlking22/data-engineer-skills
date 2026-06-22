@@ -181,24 +181,19 @@ allowed-tools: [Read, Grep, Glob]
 | `NOT IN (SELECT ...)` | 子查询含NULL时结果异常 | 使用 `NOT EXISTS` |
 | `UNION` (不需要去重时) | 多余去重操作 | 使用 `UNION ALL` |
 
-## 数据库特定检查
+## ADB MySQL 与 MaxCompute 审查重点
 
-> ⚠️ **废弃说明**：本套件仅支持 **AnalyticDB MySQL** 和 **MaxCompute**。下方针对 MySQL/PostgreSQL/SQL Server 的检查项仅供历史参考。ADB MySQL 的审查重点应是：分布键是否对齐 JOIN 列、分区裁剪是否命中、是否误用复合索引/UNIQUE KEY、是否误用 ON UPDATE CURRENT_TIMESTAMP；MaxCompute 的审查重点是 WHERE 是否带分区字段、小表是否用 MAPJOIN。
+> 本套件仅支持 AnalyticDB MySQL 和 MaxCompute，审查时应聚焦两类引擎的特性。
 
-### MySQL
-- 检查 `EXPLAIN` 中的 `type` 列（ALL/index/range/ref）
-- 检查 `Extra` 列（Using filesort, Using temporary）
-- 检查索引长度 `key_len`
+**ADB MySQL**：
+- 分布键是否对齐 JOIN 列（避免数据重分布）
+- 分区裁剪是否命中（WHERE 是否带分区列）
+- 是否误用复合索引 / UNIQUE KEY（ADB 不支持）
+- 是否误用 `ON UPDATE CURRENT_TIMESTAMP`（ADB 列属性不支持）
 
-### PostgreSQL
-- 检查执行计划节点类型（Seq Scan vs Index Scan）
-- 检查实际 vs 预估行数差异
-- 检查Buffers使用情况
-
-### SQL Server
-- 检查执行计划中的扫描类型（Scan vs Seek）
-- 检查Key Lookup操作
-- 检查Sort和Hash操作成本
+**MaxCompute**：
+- WHERE 是否带分区字段（否则全表扫描）
+- 小表 JOIN 是否用了 MAPJOIN
 
 ## 当前审查对象
 

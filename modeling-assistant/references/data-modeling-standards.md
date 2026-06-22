@@ -6,10 +6,12 @@
 2. [模型设计模式](#模型设计模式)
 3. [命名规范](#命名规范)
 4. [表结构设计规范](#表结构设计规范)
-5. [OneData 建模理论](#onedata-建模理论)
-6. [数据血缘规范](#数据血缘规范)
 
-> **重要**：OneData 方法论已独立成文，详见 [onedata-methodology.md](onedata-methodology.md)。本文档 OneData 章节为概览，完整内容（数据域划分工作流、总线矩阵模板、指标体系构建、分层落地规范、与 Kimball 协作流程）请参考独立文档。
+> **相关主题**（已独立成文，不在本文展开）：
+> - **OneData 方法论**（数据域划分、总线矩阵、指标体系、分层落地规范、与 Kimball 协作）：[onedata-methodology.md](onedata-methodology.md)
+> - **数据血缘规范**（类型定义、SQL 标注、lineage.yml、影响分析）：[../../dw-refactor-assistant/references/lineage-analysis-guide.md](../../dw-refactor-assistant/references/lineage-analysis-guide.md)
+>
+> 本文档聚焦 **Kimball 维度建模规范**（概念、设计模式、命名、ADB DDL 模板）。
 
 ---
 
@@ -218,6 +220,8 @@
 
 ## 表结构设计规范
 
+> **边界**：分层设计原则与各层（ODS/DWD/DWS/ADS/DIM）职责见 [onedata-methodology.md](onedata-methodology.md) §5；本节聚焦 ADB MySQL 的物理 DDL 模板。
+
 ### 事实表结构模板（AnalyticDB MySQL 合法 DDL）
 
 > ⚠️ 以下语法以阿里云 AnalyticDB MySQL 为准。ADB 关键约束：① 主键必须包含分布键和分区键；② 不支持唯一索引（`UNIQUE KEY`）、不支持多列复合索引；③ 不支持独立 `CREATE INDEX`，索引用 `INDEX` 内联；④ 不支持 `PARTITION BY RANGE ... VALUES LESS THAN`，只能 `PARTITION BY VALUE(...)`；⑤ 列属性不支持 `ON UPDATE CURRENT_TIMESTAMP`；⑥ `AUTO_INCREMENT` 仅限 BIGINT，值唯一但非顺序递增。详见 [ADB CREATE TABLE 官方文档](https://help.aliyun.com/zh/analyticdb/analyticdb-for-mysql/developer-reference/create-table)。
@@ -305,198 +309,11 @@ COMMENT '用户维度表（SCD Type 2）';
 
 ---
 
-## OneData 建模理论
+## 相关主题（独立成文）
 
-OneData 是阿里提出的数据建设方法论，核心目标是将数据"标准化、体系化、服务化"，与本套件的 Kimball 维度建模思想相辅相成。
-
-### 核心概念
-
-| 概念 | 说明 | 示例 |
-|------|------|------|
-| **数据域** | 面向业务分析，将业务过程进行抽象归类 | 交易域、用户域、商品域、流量域 |
-| **业务过程** | 业务活动中的具体事件 | 下单、支付、退款 |
-| **原子指标** | 基于某一业务过程的度量值 | `SUM(支付金额)` |
-| **派生指标** | 原子指标 + 时间周期 + 修饰词 | 最近7天_广东省_支付金额 |
-| **修饰词** | 对指标的限定条件 | 区域、终端、渠道 |
-| **时间周期** | 统计的时间范围 | 最近1天、最近7天、最近30天 |
-| **维度** | 分析观察的角度 | 日期、地区、用户等级 |
-
-### 与 Kimball 维度建模的关系
-
-| 维度 | Kimball 维度建模 | OneData 建模理论 |
-|------|-----------------|-----------------|
-| **核心关注** | 事实表 + 维度表的星型模型设计 | 指标体系的标准化与规范化 |
-| **输出物** | 数据模型（表结构） | 指标体系 + 数据模型 |
-| **设计起点** | 业务过程 → 粒度声明 → 维度设计 | 数据域划分 → 业务过程识别 → 指标定义 |
-| **互补关系** | 提供表级设计方法 | 提供指标管理方法 |
-
-> **实践建议**：用 OneData 方法划分数据域、定义指标体系，用 Kimball 方法设计具体的事实表和维度表。两者结合使用。
-
-### 数据域划分
-
-数据域是 OneData 建模的第一步，将业务过程按主题归类：
-
-```
-示例：电商业务的数据域划分
-
-┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐
-│  交易域  │  │  用户域  │  │  商品域  │  │  流量域  │
-├──────────┤  ├──────────┤  ├──────────┤  ├──────────┤
-│ 下单     │  │ 注册     │  │ 上架     │  │ 浏览     │
-│ 支付     │  │ 登录     │  │ 搜索     │  │ 点击     │
-│ 退款     │  │ 等级变更 │  │ 收藏     │  │ 曝光     │
-│ 发货     │  │ 注销     │  │ 评价     │  │ 加购     │
-└──────────┘  └──────────┘  └──────────┘  └──────────┘
-```
-
-### 总线矩阵
-
-总线矩阵是 OneData 的核心设计工具，描述业务过程与维度的关系：
-
-| 业务过程 | 日期 | 用户 | 商品 | 地区 | 渠道 | 店铺 |
-|---------|------|------|------|------|------|------|
-| 下单 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| 支付 | ✓ | ✓ | - | ✓ | ✓ | - |
-| 退款 | ✓ | ✓ | ✓ | - | - | ✓ |
-| 登录 | ✓ | ✓ | - | ✓ | ✓ | - |
-| 浏览 | ✓ | ✓ | ✓ | - | ✓ | - |
-
-### 数据仓库分层规范
-
-遵循 OneData 的层次划分：
-
-```
-ODS（贴源层）
-  ↓  数据清洗、去重、标准化
-DWD（明细层）  ← DIM（维度层，贯穿各层）
-  ↓  轻度汇总、指标计算
-DWS（汇总层）
-  ↓  面向应用聚合、报表加工
-ADS（应用层）
-```
-
-| 层级 | 全称 | 职责 | 数据特征 |
-|------|------|------|---------|
-| **ODS** | Operational Data Store | 贴源层，保持源系统结构 | 原始数据，不做转换 |
-| **DWD** | Data Warehouse Detail | 明细层，数据清洗和标准化 | 明细粒度，关联维度代理键 |
-| **DWS** | Data Warehouse Summary | 汇总层，面向分析主题 | 轻度汇总，按天/周/月聚合 |
-| **ADS** | Application Data Service | 应用层，面向报表/产品 | 高度聚合，可直接消费 |
-| **DIM** | Dimension | 维度层，公共维度表 | 贯穿各层，保证一致性 |
-
-### OneData 指标规范
-
-指标命名遵循 OneData 规范：
-
-```
-格式：{原子指标}_{时间周期}_{修饰词}
-
-示例：
-- 最近7天_广东省_支付金额
-- 最近30天_iOS_新注册用户数
-- 当日_全平台_下单笔数
-```
-
-对应的表字段命名：
-```sql
--- DWS 层指标字段
-CREATE TABLE dws_trade_user_1d (
-    user_id       BIGINT  COMMENT '用户ID',
-    pay_amount_1d DECIMAL(18,2) COMMENT '最近1天支付金额',
-    pay_cnt_1d    BIGINT  COMMENT '最近1天支付次数',
-    pay_amount_7d DECIMAL(18,2) COMMENT '最近7天支付金额',
-    pay_cnt_30d   BIGINT  COMMENT '最近30天支付次数'
-) COMMENT '用户交易1日汇总表';
-```
-
----
-
-## 数据血缘规范
-
-### 血缘关系类型
-
-| 类型 | 说明 | 示例 |
-|------|------|------|
-| 表级血缘 | 表与表之间的依赖 | `stg_orders` → `fct_orders` |
-| 字段级血缘 | 字段与字段的映射 | `stg_orders.user_id` → `fct_orders.user_sk` |
-| 任务级血缘 | ETL任务间的依赖 | `load_staging` → `load_marts` |
-
-### 血缘标注规范
-
-在SQL中使用注释标注血缘关系：
-
-```sql
-/*
- * 上游依赖（ODS 贴源层）:
- *   - ods_orders
- *   - ods_order_items
- *
- * 下游消费（DWS/ADS）:
- *   - dws_trade_order_1d
- *   - ads_daily_sales
- *
- * 业务 owner: sales-team@company.com
- * 技术 owner: data-team@company.com
- */
-
-WITH orders AS (
-    -- 上游：贴源层 ods_orders（ODS）
-    SELECT * FROM ods_orders
-),
-
-items AS (
-    -- 上游：贴源层 ods_order_items（ODS）
-    SELECT * FROM ods_order_items
-)
-
-SELECT
-    -- pk: order_id from orders.order_id
-    order_id,
-
-    -- fk: user_id from orders.user_id
-    user_id,
-
-    -- measure: sum of items.amount
-    SUM(i.amount) AS total_amount
-
-FROM orders o
-JOIN items i ON o.order_id = i.order_id
-GROUP BY 1, 2
-```
-
-### 血缘文档格式
-
-```yaml
-# lineage.yml
-table: fct_orders
-lineage:
-  upstream:
-    tables:
-      - name: raw.orders
-        type: source
-        mapping:
-          order_id: order_id
-          user_id: user_id
-          amount: total_amount
-
-      - name: raw.order_items
-        type: source
-        mapping:
-          order_id: order_id
-          product_id: product_id
-          quantity: quantity
-
-      - name: dim_users
-        type: dimension
-        join_key: user_id
-
-  downstream:
-    tables:
-      - name: agg_daily_sales
-        type: aggregate
-
-      - name: rpt_sales_dashboard
-        type: report
-```
+> 以下主题已从本文档迁出，避免与本"Kimball 维度建模规范"职责混杂：
+> - 📖 **OneData 方法论**（数据域划分、总线矩阵、指标体系、分层落地规范、与 Kimball 协作流程）→ [onedata-methodology.md](onedata-methodology.md)
+> - 🔗 **数据血缘规范**（血缘类型定义、SQL 标注规范、lineage.yml 格式、SQL 解析、影响分析）→ [../../dw-refactor-assistant/references/lineage-analysis-guide.md](../../dw-refactor-assistant/references/lineage-analysis-guide.md)
 
 ---
 

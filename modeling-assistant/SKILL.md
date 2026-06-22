@@ -40,7 +40,7 @@ description: |
 | 何时读取 | 文件 | 内容 | 场景 |
 |---------|------|------|------|
 | OneData 方法论 | [references/onedata-methodology.md](references/onedata-methodology.md) | 数据域划分、总线矩阵、指标体系、分层落地规范 | 自顶向下规划 |
-| 维度建模规范 | [references/data-modeling-standards.md](references/data-modeling-standards.md) | 维度建模规范、SCD策略、Kimball 完整规范 | 维度模型设计 |
+| 维度建模规范 | [references/data-modeling-standards.md](references/data-modeling-standards.md) | 维度建模概念、设计模式、命名规范、ADB DDL 模板 | 维度模型设计 |
 | 模型设计时 | [references/model-design.md](references/model-design.md) | 字段定义、约束规范、模型设计模板 | 定义表结构 |
 | Schema设计时 | [references/schema-doc.md](references/schema-doc.md) | 数据字典、血缘分析、样例数据 | 生成文档 |
 | **最佳实践指南** | [references/best-practices.md](references/best-practices.md) | **反模式、命名反例、粒度陷阱、SQL 示例、踩坑教训** |
@@ -188,7 +188,7 @@ modeling_package:
 
     dimensions:
       - name: "dim_user"
-        scd_type: 1  # SCD Type 1
+        scd_type: 2  # SCD Type 2（默认，保留历史）
         natural_key: "user_id"
         attributes:
           - name: "user_id"

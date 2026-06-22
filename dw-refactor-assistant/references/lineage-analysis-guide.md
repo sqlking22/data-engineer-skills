@@ -45,6 +45,92 @@ description: |
 
 ---
 
+## 血缘标注与文档规范
+
+> 建模与 ETL 开发时应主动标注血缘，便于后续自动化解析与影响分析。本文档是数据血缘的**唯一权威来源**（类型定义 + 标注规范 + 文档格式 + 解析方法）。
+
+### SQL 注释标注血缘
+
+在 SQL 中使用注释标注上下游依赖：
+
+```sql
+/*
+ * 上游依赖（ODS 贴源层）:
+ *   - ods_orders
+ *   - ods_order_items
+ *
+ * 下游消费（DWS/ADS）:
+ *   - dws_trade_order_1d
+ *   - ads_daily_sales
+ *
+ * 业务 owner: sales-team@company.com
+ * 技术 owner: data-team@company.com
+ */
+
+WITH orders AS (
+    -- 上游：贴源层 ods_orders（ODS）
+    SELECT * FROM ods_orders
+),
+
+items AS (
+    -- 上游：贴源层 ods_order_items（ODS）
+    SELECT * FROM ods_order_items
+)
+
+SELECT
+    -- pk: order_id from orders.order_id
+    order_id,
+
+    -- fk: user_id from orders.user_id
+    user_id,
+
+    -- measure: sum of items.amount
+    SUM(i.amount) AS total_amount
+
+FROM orders o
+JOIN items i ON o.order_id = i.order_id
+GROUP BY 1, 2
+```
+
+### 血缘文档格式（lineage.yml）
+
+结构化的表级血缘记录格式：
+
+```yaml
+# lineage.yml
+table: fct_orders
+lineage:
+  upstream:
+    tables:
+      - name: raw.orders
+        type: source
+        mapping:
+          order_id: order_id
+          user_id: user_id
+          amount: total_amount
+
+      - name: raw.order_items
+        type: source
+        mapping:
+          order_id: order_id
+          product_id: product_id
+          quantity: quantity
+
+      - name: dim_users
+        type: dimension
+        join_key: user_id
+
+  downstream:
+    tables:
+      - name: agg_daily_sales
+        type: aggregate
+
+      - name: rpt_sales_dashboard
+        type: report
+```
+
+---
+
 ## 2. SQL 血缘解析
 
 ### 2.1 解析核心逻辑

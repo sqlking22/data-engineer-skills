@@ -82,10 +82,13 @@ description: |
 |---------|------|------|------|
 | 重构前 | [references/refactor-methodology.md](references/refactor-methodology.md) | 5阶段重构方法论 | 了解重构全貌 |
 | 资产盘点时 | [references/asset-inventory-template.md](references/asset-inventory-template.md) | 盘点模板、检查清单 | 执行现状盘点 |
+| 模型标准化时 | [references/model-standardize.md](references/model-standardize.md) | 反向归域、命名整改、迁移映射 | 执行阶段2标准化 |
+| 重复检测时 | [references/dup-detection.md](references/dup-detection.md) | 表名/结构/逻辑重复检测、合并建议 | 识别烟囱式重复 |
 | 血缘分析时 | [references/lineage-analysis-guide.md](references/lineage-analysis-guide.md) | 血缘扫描方法、工具 | 梳理依赖关系 |
 | 迁移执行时 | [references/migration-playbook.md](references/migration-playbook.md) | 迁移步骤、回滚预案 | 执行迁移 |
 | 治理建设时 | [references/governance-framework.md](references/governance-framework.md) | 治理流程、制度 | 建立长效机制 |
 | **最佳实践指南** | [references/best-practices.md](references/best-practices.md) | **重构优先级判定、双跑阈值、灰度切换、回滚触发** |
+| 使用示例 | [examples/example-inventory.md](examples/example-inventory.md) | 资产盘点完整示例 | 参考实际输出 |
 
 ---
 
@@ -673,9 +676,9 @@ components:
 
 ### 1. 重构前先盘点
 
-- 用 [scripts/scan-tables.sh](../scripts/scan-tables.sh) 生成资产清单
-- 用 [scripts/check-naming.sh](../scripts/check-naming.sh) 检查命名违规
-- 用 [scripts/detect-duplicates.sh](../scripts/detect-duplicates.sh) 识别重复模型
+- 用 [scripts/scan-tables.sh](scripts/scan-tables.sh) 生成资产清单
+- 用 [scripts/check-naming.sh](scripts/check-naming.sh) 检查命名违规
+- 用 [scripts/detect-duplicates.sh](scripts/detect-duplicates.sh) 识别重复模型
 - 输出问题清单后按 P0/P1/P2/P3 排优先级
 
 ### 2. 双跑期合理阈值

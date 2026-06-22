@@ -24,12 +24,12 @@ requirement_package.yaml → modeling_package.yaml → sql_package.yaml → dq_p
 
 | 模块 | 入口 | 阶段命令 | 阶段Agent |
 |------|------|----------|-----------|
-| 需求分析 | `/requirement-analyst` | `/requirement-parser` → `/requirement-clarify` → `/requirement-transform` | general-purpose → Explore → general-purpose |
+| 需求分析 | `/requirement-analyst` | `/requirement-parser` → `/requirement-clarify` → `/requirement-transform` | general-purpose → general-purpose → general-purpose |
 | 数据建模 | `/modeling-assistant` | `/model-design` → `/schema-doc` | general-purpose → general-purpose |
 | SQL开发 | `/sql-assistant` | `/sql-gen` → `/sql-review` → `/sql-explain` | general-purpose → Explore → Explore |
 | 数据质量 | `/dq-assistant` | `/dq-rule-gen` → `/dq-check` → `/dq-doc` | general-purpose → general-purpose → general-purpose |
 | 数据测试 | `/test-engineer` | `/unit-test` → `/integration-test` → `/performance-test` | general-purpose → general-purpose → general-purpose |
-| 数仓重构 | `/dw-refactor-assistant` | `/asset-inventory` → `/model-standardize` → `/lineage-scan` → `/dup-detection` → `/impact-analysis` → `/refactor-plan` → `/governance-setup` | 7阶段 |
+| 数仓重构 | `/dw-refactor-assistant` | `/asset-inventory` → `/model-standardize` → `/lineage-scan` → `/dup-detection` → `/impact-analysis` → `/refactor-plan` → `/governance-setup` | 5阶段（7命令） |
 | 联动中枢 | `/skill-hub` | 端到端编排 | general-purpose |
 
 **快捷联动**：`--from-requirement`、`--from-model`、`--from-sql`、`--from-dq` 参数实现上游包自动注入。
@@ -101,7 +101,7 @@ ODS（贴源层） → DWD（明细层） → DWS（汇总层） → ADS（应�
 |------|------|
 | 联动配置 | `skill-connections.yaml` — 包格式规范、联动关系、工作流定义 |
 | 联动中枢 | `skill-hub.md` — 完整工作流模板、上下文传递协议 |
-| SQL规范 | `sql-assistant/references/sql-standards.md` — 命名、方言差异、优化checklist |
+| SQL规范 | `sql-assistant/references/sql-standards.md` — 命名、代码格式、反模式、性能 checklist；ADB/MaxCompute 方言见 `adb-mysql-guide.md` / `maxcompute-guide.md` |
 | SQL最佳实践 | `sql-assistant/references/best-practices.md` — 正反例、性能调优 |
 | OneData方法论 | `modeling-assistant/references/onedata-methodology.md` |
 | Kimball维度建模 | `modeling-assistant/references/data-modeling-standards.md` |

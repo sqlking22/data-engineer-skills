@@ -195,38 +195,6 @@ WHERE pt = '202401' GROUP BY user_id;
 - 🔴 **较差**：磁盘读取 20% - 50%
 - 🔴 **严重**：磁盘读取 > 50%
 
-## 数据库特定解析
-
-### MySQL EXPLAIN 字段解读
-
-| 字段 | 含义 | 关键值 |
-|------|------|--------|
-| type | 访问类型 | 🟢 system/const/eq_ref/ref 🟡 range/index 🔴 ALL |
-| Extra | 额外信息 | 🔴 Using filesort, Using temporary 🟢 Using index |
-| rows | 预估扫描行数 | 越小越好 |
-| key | 实际使用的索引 | NULL表示无索引 |
-
-### PostgreSQL 关键指标
-
-| 指标 | 含义 | 关注点 |
-|------|------|--------|
-| cost=X..Y | 启动成本..总成本 | Y值越小越好 |
-| actual time=A..B | 实际启动..总时间 | B值是实际耗时 |
-| loops=N | 执行次数 | N>1表示嵌套循环 |
-| Buffers: shared hit/read | 缓存命中/磁盘读取 | read越小越好 |
-
-### SQL Server 图形计划
-
-| 图标 | 含义 | 状态 |
-|------|------|------|
-| Table Scan | 全表扫描 | 🔴 |
-| Clustered Index Scan | 聚集索引扫描 | 🟡 |
-| Clustered Index Seek | 聚集索引查找 | 🟢 |
-| Index Scan | 索引扫描 | 🟡 |
-| Index Seek | 索引查找 | 🟢 |
-| Key Lookup | 键查找 | 🟡 |
-| Sort | 排序 | 🟡 |
-
 ## 常见优化模式
 
 ### 场景1：全表扫描优化

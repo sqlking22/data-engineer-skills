@@ -70,27 +70,7 @@ FROM table_name
 
 ## 数据库方言适配
 
-> ⚠️ **废弃说明**：本套件仅支持 **AnalyticDB MySQL** 和 **MaxCompute**。下方关于 MySQL/PostgreSQL/SQL Server/Oracle 的生成指南仅供历史参考，**不再适用**。新代码请使用本文档后半部分的"阿里云 AnalyticDB for MySQL 生成指南"，并为 MaxCompute 单独适配。
-
-### MySQL 特有
-- 日期：`CURDATE()`, `DATE_SUB()`, `DATE_FORMAT()`
-- 分页：`LIMIT offset, count`
-- 类型转换：`CAST(x AS type)`
-
-### PostgreSQL 特有
-- 日期：`CURRENT_DATE`, `NOW()`, `DATE_TRUNC()`
-- 类型转换：`::type` 或 `CAST(x AS type)`
-- JSON：`json_col->>'field'`
-
-### SQL Server 特有
-- 日期：`GETDATE()`, `DATEADD()`, `DATEDIFF()`
-- 分页：`OFFSET ... FETCH NEXT ...`
-- TOP：`SELECT TOP n ...`
-
-### Oracle 特有
-- 日期：`SYSDATE`, `TRUNC()`
-- 分页：`ROWNUM` 或 `OFFSET FETCH`
-- 空值：`NVL()` 替代 `COALESCE()`
+> 本套件仅支持 **AnalyticDB MySQL** 和 **MaxCompute**，生成 SQL 前必须确认目标库。函数对照与方言差异详见 [sql-standards.md](sql-standards.md)、[adb-mysql-guide.md](adb-mysql-guide.md)、[maxcompute-guide.md](maxcompute-guide.md)。
 
 ### 阿里云 AnalyticDB for MySQL 特有
 - 分布键：`DISTRIBUTED BY HASH(column)`（必选）
@@ -166,13 +146,11 @@ SELECT * FROM final_aggregate;
 
 ## 输入解析
 
-> ⚠️ **废弃说明**：本套件仅支持 **AnalyticDB MySQL** 和 **MaxCompute**。下方关于 MySQL/PostgreSQL/SQL Server/Oracle 的生成指南仅供历史参考，**不再适用**。新代码请使用本文档后半部分的"阿里云 AnalyticDB for MySQL 生成指南"，并为 MaxCompute 单独适配。
-
 从用户输入中提取：
 
 | 要素 | 示例 |
 |------|------|
-| 数据库类型 | MySQL 8.0、PostgreSQL 15、SQL Server 2022 |
+| 数据库类型 | AnalyticDB MySQL、MaxCompute |
 | 查询目标 | 销售额统计、用户增长、留存率 |
 | 时间范围 | 过去30天、2024年Q1、最近一年 |
 | 过滤条件 | 已完成订单、活跃用户、特定区域 |
