@@ -65,6 +65,9 @@ description: |
 | 需要时读取 | 文件 | 内容 |
 |-----------|------|------|
 | 需求分析规范 | [references/requirement-standards.md](references/requirement-standards.md) | 需求分类、检查清单、输出规范、术语定义 |
+| 需求解析 | [references/requirement-parser.md](references/requirement-parser.md) | 解析维度、requirement_parsed.yaml schema |
+| 需求澄清 | [references/requirement-clarify.md](references/requirement-clarify.md) | 缺口识别维度、风险分级、checklist 模板 |
+| 需求转化 | [references/requirement-transform.md](references/requirement-transform.md) | 下游 hints、requirement_package、职责边界 |
 | **最佳实践指南** | [references/best-practices.md](references/best-practices.md) | **反模式、避坑、需求描述模板、经验教训** |
 | 使用示例 | [examples/](examples/) 目录 | 典型需求分析场景的完整示例 |
 

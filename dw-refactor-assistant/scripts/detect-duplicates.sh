@@ -14,6 +14,10 @@ if [ -z "$CONNECTION" ]; then
     exit 1
 fi
 
+# 临时文件目录（mktemp 避免多用户/多实例碰撞，脚本退出时 trap 自动清理）
+TMP_DIR=$(mktemp -d) || { echo "❌ 无法创建临时目录"; exit 1; }
+trap 'rm -rf "$TMP_DIR"' EXIT
+
 DB_NAME=$(echo "$CONNECTION" | grep -oE 'db=[^ ]+' | cut -d= -f2)
 TIMESTAMP=$(date '+%Y%m%d %H:%M:%S')
 
@@ -30,21 +34,21 @@ SELECT TABLE_NAME
 FROM information_schema.tables
 WHERE TABLE_SCHEMA = '$DB_NAME'
 ORDER BY TABLE_NAME
-" > /tmp/all_tables.txt 2>/dev/null
+" > "$TMP_DIR/all_tables.txt" 2>/dev/null
 
 # 检测相似表名（简单的字符串匹配）
-> /tmp/similar_names.txt
-sort /tmp/all_tables.txt | while read -r table; do
+> "$TMP_DIR/similar_names.txt"
+sort "$TMP_DIR/all_tables.txt" | while read -r table; do
     [ -z "$table" ] && continue
 
     # 查找相似名称（去除后缀 _1, _2, _v1, _v2）
     base_name=$(echo "$table" | sed -E 's/_(v[0-9]+|[0-9]+|old|new|bak|backup|copy)$//')
 
     # 查找同基础名的其他表
-    similar=$(grep "^${base_name}_" /tmp/all_tables.txt 2>/dev/null | grep -v "^${table}$")
+    similar=$(grep "^${base_name}_" "$TMP_DIR/all_tables.txt" 2>/dev/null | grep -v "^${table}$")
 
     if [ -n "$similar" ]; then
-        echo "$table | $similar" >> /tmp/similar_names.txt
+        echo "$table | $similar" >> "$TMP_DIR/similar_names.txt"
     fi
 done
 
@@ -52,8 +56,8 @@ done
 echo "2️⃣  基于字段结构相似性检测..."
 
 # 准备每个表的字段哈希
-> /tmp/table_hashes.txt
-for table in $(cat /tmp/all_tables.txt); do
+> "$TMP_DIR/table_hashes.txt"
+for table in $(cat "$TMP_DIR/all_tables.txt"); do
     [ -z "$table" ] && continue
 
     # 获取表的所有字段名（排序后拼接作为哈希）
@@ -64,12 +68,11 @@ for table in $(cat /tmp/all_tables.txt); do
     ORDER BY ORDINAL_POSITION
     " 2>/dev/null | tr '\n' ',' | tr -d ' ')
 
-    echo "$table | $fields" >> /tmp/table_hashes.txt
+    echo "$table | $fields" >> "$TMP_DIR/table_hashes.txt"
 done
 
 # 查找哈希相同的表
-> /tmp/similar_structures.txt
-sort -t'|' -k2 /tmp/table_hashes.txt | awk -F'|' '{
+sort -t'|' -k2 "$TMP_DIR/table_hashes.txt" | awk -F'|' '{
     hash = $2;
     gsub(/^[ \t]+|[ \t]+$/, "", hash);
     if (prev_hash != "" && hash == prev_hash) {
@@ -77,7 +80,7 @@ sort -t'|' -k2 /tmp/table_hashes.txt | awk -F'|' '{
     }
     prev_hash = hash;
     prev_line = $1;
-}' > /tmp/similar_structures.txt
+}' > "$TMP_DIR/similar_structures.txt"
 
 # 3. 基于行数差异检测（同一名称但不同行数）
 echo "3️⃣  基于行数差异检测..."
@@ -86,7 +89,7 @@ SELECT TABLE_NAME, TABLE_ROWS
 FROM information_schema.tables
 WHERE TABLE_SCHEMA = '$DB_NAME' AND TABLE_TYPE = 'BASE TABLE'
 ORDER BY TABLE_NAME, TABLE_ROWS DESC
-" > /tmp/table_rows.txt 2>/dev/null
+" > "$TMP_DIR/table_rows.txt" 2>/dev/null
 
 # 4. 生成报告
 {
@@ -99,26 +102,26 @@ ORDER BY TABLE_NAME, TABLE_ROWS DESC
     echo ""
 
     # 表名相似
-    SIMILAR_COUNT=$(wc -l < /tmp/similar_names.txt)
+    SIMILAR_COUNT=$(wc -l < "$TMP_DIR/similar_names.txt")
     echo "## 1. 表名相似的表"
     echo ""
     if [ "$SIMILAR_COUNT" -gt 0 ]; then
         echo "发现 $SIMILAR_COUNT 组相似表名（建议人工评估是否需要合并）"
         echo ""
-        cat /tmp/similar_names.txt
+        cat "$TMP_DIR/similar_names.txt"
     else
         echo "✅ 未发现表名相似的表"
     fi
     echo ""
 
     # 结构相似
-    STRUCT_COUNT=$(wc -l < /tmp/similar_structures.txt)
+    STRUCT_COUNT=$(wc -l < "$TMP_DIR/similar_structures.txt")
     echo "## 2. 字段结构完全相同的表"
     echo ""
     if [ "$STRUCT_COUNT" -gt 0 ]; then
         echo "⚠️  发现 $STRUCT_COUNT 组完全重复的表（强烈建议合并）"
         echo ""
-        cat /tmp/similar_structures.txt
+        cat "$TMP_DIR/similar_structures.txt"
     else
         echo "✅ 未发现结构完全相同的表"
     fi
@@ -171,10 +174,6 @@ ORDER BY TABLE_NAME, TABLE_ROWS DESC
 } > "$OUTPUT_FILE"
 
 cat "$OUTPUT_FILE"
-
-# 清理临时文件
-rm -f /tmp/all_tables.txt /tmp/similar_names.txt /tmp/table_hashes.txt
-rm -f /tmp/similar_structures.txt /tmp/table_rows.txt
 
 echo ""
 echo "════════════════════════════════════════════════"

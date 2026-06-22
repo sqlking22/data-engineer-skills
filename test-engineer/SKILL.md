@@ -65,6 +65,9 @@ description: |
 | 设计测试策略时 | [references/test-standards.md](references/test-standards.md) | 测试金字塔、命名规范、断言库 | 规划测试覆盖范围 |
 | 编写断言语句时 | [references/test-standards.md](references/test-standards.md) | 断言最佳实践、容忍度设置 | 需要清晰错误信息 |
 | 设置覆盖率标准时 | [references/test-standards.md](references/test-standards.md) | 覆盖率要求、豁免规则 | 定义最低覆盖率 |
+| 单元测试 | [references/unit-test.md](references/unit-test.md) | 测试类型、断言规范、test_cases.yaml | 字段级校验 |
+| 集成测试 | [references/integration-test.md](references/integration-test.md) | 跨层对账、容忍度规范 | 跨层一致性 |
+| 性能测试 | [references/performance-test.md](references/performance-test.md) | 性能基线、P50/P95、回归对比 | 查询性能 |
 | **最佳实践指南** | [references/best-practices.md](references/best-practices.md) | **测试金字塔、Fixture 策略、性能基线、CI/CD 集成** |
 | 查看示例时 | [examples/](examples/) 目录 | 典型测试场景 | 学习测试写法 |
 
